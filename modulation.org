@@ -1,0 +1,43 @@
+* 信号调制
+#+BEGIN_SRC dot :file Images/mod_class.png :results file
+digraph G {
+m [label="模拟调制"];
+s [label="数字调制"];
+
+m->{AM,FM,PM};
+          }
+#+END_SRC
+
+#+RESULTS:
+[[file:Images/mod_class.png]]
+
+** AM
+   载波信号为 $c(t)=\cos(2\pi f_ct+\theta_c)$ , $f_c$ 为载波频率，$\theta_c$ 为载波起始相位。为方便讨论，假设 $\theta_c=0$ .
+
+   调制信号的波形为 $x(t)$ ,调制时，外加直流分量 $A_0$ ,输出已调信号的包络正比于 $x(t)$ ,其时域波形为：
+   \begin{equation}
+   s_{AM}(t)=[A_0+x(t)]\cos2\pi f_ct
+   \end{equation}
+   通常将 $S_{AM}(t)$ 写成
+   \begin{equation}\label{eq-sAMt}
+   s_{AM}(t)=[1+mx(t)]\cos2\pi f_ct
+   \end{equation}
+   其中， $m$ 为调制深度，使用包络检波等方法能恢复出原始信号，但为了保证不失真，必须满足 $1+mx(t)\geq 0$ .
+   已知信号 $x(t)$ 的频谱为 $X(f)$ ,则已调制信号的频谱为
+   \begin{equation}
+   S_{AM}(f)=\frac{1}{2}[\delta(f-f_c)+\delta(f+f_c)]+\frac{m}{2}[X(f-f_c)+X(f+f_c)]
+   \end{equation}
+
+   式ref:eq-sAMt 可以重写为
+   \begin{equation}
+   s_{AM}(t)=\Re{[1+mx(t)]\exp(j2\pi f_ct)]
+   \end{equation}
+
+   可知，已调信号的瞬时幅度是 $|1+mx(t)|$ , 瞬时相位是 $2\pi f_c t$ 。
+   *瞬时幅度是时变函数，去除载波线性相位后的瞬时相位是常数。*
+
+
+** FM
+
+
+
