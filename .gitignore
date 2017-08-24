@@ -1,2 +1,9 @@
 *_thumb.png
 ltximg/
+*.bbl
+*.aux
+*.pdf
+*.tex
+*.sh
+*.html
+_minted*/

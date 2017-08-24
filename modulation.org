@@ -1,3 +1,18 @@
+# -*- eval: (setq org-download-image-dir (file-name-sans-extension (buffer-name))); -*-
+# -*- org-export-babel-evaluate: nil; -*-
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../orgstyle.css"/>
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:t arch:headline author:t c:nil S:nil -:nil
+#+OPTIONS: creator:nil d:(not "En") date:t e:t email:nil f:t inline:t
+#+OPTIONS: num:t p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
+#+OPTIONS: title:t toc:t todo:t |:t 
+#+OPTIONS: ^:{}
+#+LATEX_CLASS: ctexart
+#+STARTUP: entitiespretty:t
+#+TITLE: 信号调制
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.0.50.2 (Org mode 9.0.4)
+
 * 信号调制
 #+BEGIN_SRC dot :file Images/mod_class.png :results file
 digraph G {
@@ -28,7 +43,7 @@ m->{AM,FM,PM};
    S_{AM}(f)=\frac{1}{2}[\delta(f-f_c)+\delta(f+f_c)]+\frac{m}{2}[X(f-f_c)+X(f+f_c)]
    \end{equation}
 
-   式ref:eq-sAMt 可以重写为
+   式 ref:eq-sAMt 可以重写为
    \begin{equation}
    s_{AM}(t)=\Re{[1+mx(t)]\exp(j2\pi f_ct)]
    \end{equation}
@@ -38,6 +53,46 @@ m->{AM,FM,PM};
 
 
 ** FM
+如果调制后信号的幅度不变，而瞬时频率是调制信号的线性函数，这样的调制方式称为频率调制。调频信号的时域表达式为：
+\begin{equation}\label{eq-sFMt}
+s_{FM}(t)=A\cos[2\pi f_ct+2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau]
+\end{equation}
+假设复信号 $\exp(j2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau)$ 的频谱为 $G(f)$ ,则
+
+\begin{equation}
+S_{FM}(f)=A\frac{1}{2}[G(f-f_c)+G(f+f_c)]
+\end{equation}
+
+下面开始FM 信号的频谱分析[fn:1], 假设调制信号是一个简单的正弦信号，频率为 $f_m$ 即，$x(t)=A_m\cos2\pi f_mt$
+式 ref:eq-sFMt 的瞬时相位为：
+\begin{equation}
+\Phi(t)=2\pi f_ct+2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau
+\end{equation}
+
+则瞬时频率为
+\begin{align}
+\frac{1}{2\pi}\frac{d\Phi(t)}{dt}=&f_c+k_fx(t)\\\notag
+=&f_c+k_fA_m\cos2\pi f_mt
+\end{align}
+上式说明瞬时频率在 $f_c$ 附近上下变化，变化幅度为 $k_fA_m$ ―信号的频偏峰值，记为 $\Delta f=k_fA_m$.
+上式两边积分，又可得出（假定零时刻相位为零）：
+\begin{equation}
+\Phi(t)=2\pi f_ct+\frac{\Delta f}{f_m}\sin2\pi f_mt
+\end{equation}
+定义 $\beta=\frac{\Delta f}{f_m}$ 因此，ref:eq-sFMt 可以写成
+\begin{equation}
+s_{FM}(t)=A\cos[2\pi f_ct+\beta\sin(2\pi f_mt)]
+\end{equation}
+
+经过复杂的推导，上式可以写成：
+
+
+
+* Footnotes
+
+[fn:1] https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part12/page1.html
+
+
 
 
 
