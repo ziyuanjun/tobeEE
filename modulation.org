@@ -53,7 +53,9 @@ m->{AM,FM,PM};
 
 
 ** FM
-如果调制后信号的幅度不变，而瞬时频率是调制信号的线性函数，这样的调制方式称为频率调制。调频信号的时域表达式为：
+如果调制后*信号的幅度不变*，而瞬时频率是调制信号的线性函数，这样的调制方式称为频率调制。
+
+调频信号的时域表达式为：
 \begin{equation}\label{eq-sFMt}
 s_{FM}(t)=A\cos[2\pi f_ct+2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau]
 \end{equation}
@@ -63,7 +65,7 @@ s_{FM}(t)=A\cos[2\pi f_ct+2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau]
 S_{FM}(f)=A\frac{1}{2}[G(f-f_c)+G(f+f_c)]
 \end{equation}
 
-下面开始FM 信号的频谱分析[fn:1], 假设调制信号是一个简单的正弦信号，频率为 $f_m$ 即，$x(t)=A_m\cos2\pi f_mt$
+下面对FM信号进行频谱分析[fn:1], 假设调制信号是一个简单的正弦信号，频率为 $f_m$ 即，$x(t)=A_m\cos2\pi f_mt$
 式 ref:eq-sFMt 的瞬时相位为：
 \begin{equation}
 \Phi(t)=2\pi f_ct+2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau
@@ -79,16 +81,59 @@ S_{FM}(f)=A\frac{1}{2}[G(f-f_c)+G(f+f_c)]
 \begin{equation}
 \Phi(t)=2\pi f_ct+\frac{\Delta f}{f_m}\sin2\pi f_mt
 \end{equation}
-定义 $\beta=\frac{\Delta f}{f_m}$ 因此，ref:eq-sFMt 可以写成
+定义调制指数（或调频指数） $\beta=\frac{\Delta f}{f_m}$ 因此，ref:eq-sFMt 可以写成
 \begin{equation}
 s_{FM}(t)=A\cos[2\pi f_ct+\beta\sin(2\pi f_mt)]
 \end{equation}
 
-经过复杂的推导，上式可以写成：
+经过复杂的推导[fn:2]，上式可以写成：
+\begin{equation}
+\cos[2\pi f_ct+\beta\sin(2\pi f_mt)]=\sum_{-\infty}^{\infty}J_{n}(\beta)\cos(2\pi(f_c+nf_m)t)
+\end{equation}
 
+其中， $J_n(\beta)$ 为第一类贝塞尔函数[fn:3][fn:4]。理论上，无论是发射还是接收FM信号都需要无限大的带宽，但是当 $\beta$ 取值较小时，贝塞尔函数迅速衰减；当 $\beta$ 取值较大时，贝塞尔函数会出现先增大后减小的变化趋势。
+在许多实际情况下，调频系数较小， $\beta$ 都满足小于1的条件，这被称为窄带调频信号。
+\begin{equation}
+s_{FM}(t)\approx AJ_0(\beta)\cos(2\pi f_ct) + AJ_1(\beta)[\cos(2\pi(f_c+f_m)t)-\cos(2\pi(f_c-f_m)t)]
+\end{equation}
 
+#+BEGIN_SRC python :session report :exports results :results file
+from __future__ import division
+import numpy as np
+import matplotlib.pyplot as plt
+
+beta=1
+fm=1000
+
+A=1
+fc=20000
+fs=67000
+dt=1/fs
+
+N=2048
+t=np.array(range(N))*dt
+faxis=np.linspace(0,fs,N)
+sig=A*np.cos(2*np.pi*fc*t+beta*np.sin(2*np.pi*fm*t))
+
+X=np.fft.fft(sig)
+plt.close('all')
+plt.plot(faxis,(np.abs(X)))
+plt.axis('tight')
+plt.savefig("FM_spec.png")
+"FM_spec.png"
+#+END_SRC
+
+#+RESULTS:
+[[file:FM_spec.png]]
 
 * Footnotes
+
+
+[fn:4] http://www2.ensc.sfu.ca/people/faculty/ho/ENSC327/Pre_10_Bessel.pdf
+
+[fn:3] https://www.johndcook.com/blog/bessel_functions/
+
+[fn:2] https://www.johndcook.com/blog/2016/02/17/analyzing-an-fm-signal/
 
 [fn:1] https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part12/page1.html
 
