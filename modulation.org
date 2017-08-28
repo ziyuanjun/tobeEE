@@ -14,17 +14,17 @@
 #+CREATOR: Emacs 26.0.50.2 (Org mode 9.0.4)
 
 * 信号调制
-#+BEGIN_SRC dot :file Images/mod_class.png :results file
-digraph G {
-m [label="模拟调制"];
-s [label="数字调制"];
+  #+BEGIN_SRC dot :file Images/mod_class.png :results file
+  digraph G {
+  m [label="模拟调制"];
+  s [label="数字调制"];
 
-m->{AM,FM,PM};
-          }
-#+END_SRC
+  m->{AM,FM,PM};
+  }
+  #+END_SRC
 
-#+RESULTS:
-[[file:Images/mod_class.png]]
+  #+RESULTS:
+  [[file:Images/mod_class.png]]
 
 ** AM
    载波信号为 $c(t)=\cos(2\pi f_ct+\theta_c)$ , $f_c$ 为载波频率，$\theta_c$ 为载波起始相位。为方便讨论，假设 $\theta_c=0$ .
@@ -53,80 +53,144 @@ m->{AM,FM,PM};
 
 
 ** FM
-如果调制后*信号的幅度不变*，而瞬时频率是调制信号的线性函数，这样的调制方式称为频率调制。
+   如果调制后*信号的幅度不变*，而瞬时频率是调制信号的线性函数，这样的调制方式称为频率调制。
 
-调频信号的时域表达式为：
-\begin{equation}\label{eq-sFMt}
-s_{FM}(t)=A\cos[2\pi f_ct+2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau]
-\end{equation}
-假设复信号 $\exp(j2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau)$ 的频谱为 $G(f)$ ,则
+   调频信号的时域表达式为：
+   \begin{equation}\label{eq-sFMt}
+   s_{FM}(t)=A\cos[2\pi f_ct+2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau]
+   \end{equation}
+   假设复信号 $\exp(j2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau)$ 的频谱为 $G(f)$ ,则
 
-\begin{equation}
-S_{FM}(f)=A\frac{1}{2}[G(f-f_c)+G(f+f_c)]
-\end{equation}
+   \begin{equation}
+   S_{FM}(f)=A\frac{1}{2}[G(f-f_c)+G(f+f_c)]
+   \end{equation}
 
-下面对FM信号进行频谱分析[fn:1], 假设调制信号是一个简单的正弦信号，频率为 $f_m$ 即，$x(t)=A_m\cos2\pi f_mt$
-式 ref:eq-sFMt 的瞬时相位为：
-\begin{equation}
-\Phi(t)=2\pi f_ct+2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau
-\end{equation}
+   下面对FM信号进行频谱分析[fn:1], 假设调制信号是一个简单的正弦信号，频率为 $f_m$ 即，$x(t)=A_m\cos2\pi f_mt$
+   式 ref:eq-sFMt 的瞬时相位为：
+   \begin{equation}
+   \Phi(t)=2\pi f_ct+2\pi k_f\int_{-\infty}^{t}x(\tau)d\tau
+   \end{equation}
 
-则瞬时频率为
-\begin{align}
-\frac{1}{2\pi}\frac{d\Phi(t)}{dt}=&f_c+k_fx(t)\\\notag
-=&f_c+k_fA_m\cos2\pi f_mt
-\end{align}
-上式说明瞬时频率在 $f_c$ 附近上下变化，变化幅度为 $k_fA_m$ ―信号的频偏峰值，记为 $\Delta f=k_fA_m$.
-上式两边积分，又可得出（假定零时刻相位为零）：
-\begin{equation}
-\Phi(t)=2\pi f_ct+\frac{\Delta f}{f_m}\sin2\pi f_mt
-\end{equation}
-定义调制指数（或调频指数） $\beta=\frac{\Delta f}{f_m}$ 因此，ref:eq-sFMt 可以写成
-\begin{equation}
-s_{FM}(t)=A\cos[2\pi f_ct+\beta\sin(2\pi f_mt)]
-\end{equation}
+   则瞬时频率为
+   \begin{align}
+   \frac{1}{2\pi}\frac{d\Phi(t)}{dt}=&f_c+k_fx(t)\\\notag
+   =&f_c+k_fA_m\cos2\pi f_mt
+   \end{align}
+   上式说明瞬时频率在 $f_c$ 附近上下变化，变化幅度为 $k_fA_m$ ―信号的频偏峰值，记为 $\Delta f=k_fA_m$[fn:5].
+   上式两边积分，又可得出（假定零时刻相位为零）：
+   \begin{equation}
+   \Phi(t)=2\pi f_ct+\frac{\Delta f}{f_m}\sin2\pi f_mt
+   \end{equation}
+   定义调制指数（或调频指数） $\beta=\frac{\Delta f}{f_m}$ 因此，ref:eq-sFMt 可以写成
+   \begin{equation}
+   s_{FM}(t)=A\cos[2\pi f_ct+\beta\sin(2\pi f_mt)]
+   \end{equation}
 
-经过复杂的推导[fn:2]，上式可以写成：
-\begin{equation}
-\cos[2\pi f_ct+\beta\sin(2\pi f_mt)]=\sum_{-\infty}^{\infty}J_{n}(\beta)\cos(2\pi(f_c+nf_m)t)
-\end{equation}
+   经过复杂的推导[fn:2]，上式可以写成：
+   \begin{equation}
+   \cos[2\pi f_ct+\beta\sin(2\pi f_mt)]=\sum_{-\infty}^{\infty}J_{n}(\beta)\cos(2\pi(f_c+nf_m)t)
+   \end{equation}
 
-其中， $J_n(\beta)$ 为第一类贝塞尔函数[fn:3][fn:4]。理论上，无论是发射还是接收FM信号都需要无限大的带宽，但是当 $\beta$ 取值较小时，贝塞尔函数迅速衰减；当 $\beta$ 取值较大时，贝塞尔函数会出现先增大后减小的变化趋势。
-在许多实际情况下，调频系数较小， $\beta$ 都满足小于1的条件，这被称为窄带调频信号。
-\begin{equation}
-s_{FM}(t)\approx AJ_0(\beta)\cos(2\pi f_ct) + AJ_1(\beta)[\cos(2\pi(f_c+f_m)t)-\cos(2\pi(f_c-f_m)t)]
-\end{equation}
+   其中， $J_n(\beta)$ 为第一类贝塞尔函数[fn:3][fn:4]。理论上，无论是发射还是接收FM信号都需要无限大的带宽，但是我们有
+   \begin{equation}
+   |J_n(\beta)|\to0 \text{   as   } n\to\infty
+   \end{equation}
 
-#+BEGIN_SRC python :session report :exports results :results file
-from __future__ import division
-import numpy as np
-import matplotlib.pyplot as plt
+   这个趋势又可粗略分为两种情况：当 $\beta$ 取值较小时，贝塞尔函数迅速衰减；当 $\beta$ 取值较大时，贝塞尔函数会出现先增大后减小的变化趋势。
 
-beta=1
-fm=1000
+   1. 窄带FM
+      在许多实际情况下，调频系数较小， $|\beta|$ 都满足远远小于1的条件（即 $\delta f\llf_m$ ） ，这被称为窄带调频信号。对于窄带调频，我们有
+      \begin{equation}
+      J_0(\beta)\approx1,\qquard J_1(\beta)\approx\frac{\beta}{2}, \qquard J_n(\beta)\approx0\text{, for }n>1
+      \end{equation}
 
-A=1
-fc=20000
-fs=67000
-dt=1/fs
+      \begin{equation}
+      s_{FM}(t)\approx AJ_0(\beta)\cos(2\pi f_ct) + AJ_1(\beta)[\cos(2\pi(f_c+f_m)t)-\cos(2\pi(f_c-f_m)t)]
+      \end{equation}
+      因此对于窄带FM, 可认为信号只存在 $f_c$, $f_c\pm f_m$ 的频率分量，发送窄带FM信号需要的带宽是 $2f_m$ 。
 
-N=2048
-t=np.array(range(N))*dt
-faxis=np.linspace(0,fs,N)
-sig=A*np.cos(2*np.pi*fc*t+beta*np.sin(2*np.pi*fm*t))
+   2. 宽带FM
+      $|\beta|$ 的值较大，则FM信号的频域覆盖变化范围较大，信号带宽 $2\delta f$ 。
 
-X=np.fft.fft(sig)
-plt.close('all')
-plt.plot(faxis,(np.abs(X)))
-plt.axis('tight')
-plt.savefig("FM_spec.png")
-"FM_spec.png"
-#+END_SRC
+   3. [[http://www.daenotes.com/electronics/communication-system/carsons-rule][Carson's Rule]]
+      这是一个基于实验结果的准则，该准则指出实际中发射FM/PM信号的最小带宽是：
+      \begin{equation}
+      B=2(f_m+\delta f)
+      \end{equation}
 
-#+RESULTS:
-[[file:FM_spec.png]]
 
+   #+BEGIN_SRC python :session report :exports results :results file
+   from __future__ import division
+   import numpy as np
+   import matplotlib.pyplot as plt
+
+   beta=1
+   fm=1000
+
+   A=1
+   fc=20000
+   fs=67000
+   dt=1/fs
+
+   N=2048
+   t=np.array(range(N))*dt
+   faxis=np.linspace(0,fs,N)
+   sig=A*np.cos(2*np.pi*fc*t+beta*np.sin(2*np.pi*fm*t))
+
+   X=np.fft.fft(sig)
+   plt.close('all')
+   plt.plot(faxis,(np.abs(X)))
+   plt.axis('tight')
+   plt.savefig("FM_spec.png")
+   "FM_spec.png"
+   #+END_SRC
+
+   #+RESULTS:
+   [[file:FM_spec.png]]
+
+
+** 小结
+   可以使用GNURadio 生成多种不同类型的调制信号cite:gandhiraj12_analog_digit_modul_toolk_softw_defin_radio。
+
+* 调制识别
+  How to capture raw IQ data from a RTL-SDR dongle and FM demodulate with MATLAB http://www.aaronscher.com/wireless_com_SDR/RTL_SDR_AM_spectrum_demod.html
+  Broadcast FM RDS Decode http://www.joshisanerd.com/projects/sdr_snippets/gnuradio_and_ipython//2%20Broadcast%20FM%20RDS%20Decode.html
+
+
+* 信号解调
+** AM
+   http://www.ece.uvic.ca/~elec350/lab_manual/ar01s01s05.html
+
+   从一个实例开始：
+   [[file:modulation.org_imgs/20170828_093208_3244saB.png]]
+   上面使用 GNU Radio 的 GRC 工具实现了一个AM信号的解调。从中可以看出，AM信号解调的主要步骤是：
+   1. 取幅值
+      已调信号的一般形式：
+      \begin{equation}
+      s_{AM}(t)=A_c[1+mx(t)]\cos(2\pi f_ct+\theta_c)
+      \end{equation}
+      其复信号表示为：
+
+      \begin{equation}
+      s_{AM}(t)=A_c[1+mx(t)]\exp[j(2\pi f_ct+\theta_c)]
+      \end{equation}
+
+      下变频：
+
+      \begin{align}
+      \tilde{s}_{AM}(t)=&s_{AM}(t)\exp(-j2\pi f_ct_)\\\notag
+                       =&A_c[1+mx(t)]\exp(j\theta_c)
+      \end{align}
+
+      所以去幅值之后，可以得到 $|A_c[1+m(t)]|$ 。可以看到，取幅值可以消除未知相位 $\theta_c$ 的影响，而且即使混频过程中，载波频率估计存在频差 $\Delta f$ , 在取幅值后频差的影响也可以消除。 
+   2. 去DC
+      去除直流分量后，就剩下了 $A_cm(t)$ ,此时已经恢复了原信号，只需要做适当的幅度增益调整就能得到调制信号。
+
+* 参考资料
+  优质的GNU radio 及信号相关的入门资料： http://www.ece.uvic.ca/~elec350
 * Footnotes
+
+[fn:5] 频率的变化范围跟调制信号的频率无关，只受信号幅度的影响，信号幅度越大，已调信号的频率变化范围就越大。
 
 
 [fn:4] http://www2.ensc.sfu.ca/people/faculty/ho/ENSC327/Pre_10_Bessel.pdf
@@ -141,3 +205,5 @@ plt.savefig("FM_spec.png")
 
 
 
+
+  bibliography:~/References/bibliography/refs.bib

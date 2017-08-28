@@ -7,3 +7,4 @@ ltximg/
 *.sh
 *.html
 _minted*/
+*.dat
