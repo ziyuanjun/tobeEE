@@ -18,39 +18,98 @@
   digraph G {
   m [label="模拟调制"];
   s [label="数字调制"];
-
-  m->{AM,FM,PM};
+  Ampli_M [label="调幅"];
+  Freq_M [label="调频"];
+  Phase_M [label="调相"];
+  AM [label="AM\n常规双边带调幅"];
+  DSB_SC [label="DSB_SC\n抑制载波双边带调幅"];
+  SSB[label="SSB\n(SSB_SC)"];
+  VSB[label="VSB"];
+  m->{Ampli_M,Freq_M,Phase_M};
+  Ampli_M->AM;
+  Ampli_M->DSB_SC;
+  Ampli_M->SSB->{USB,LSB};
+  Ampli_M->VSB;
+  
   }
   #+END_SRC
 
   #+RESULTS:
   [[file:Images/mod_class.png]]
+** 调幅
+*** AM
+    载波信号为 $c(t)=\cos(2\pi f_ct+\theta_c)$ , $f_c$ 为载波频率，$\theta_c$ 为载波起始相位。为方便讨论，假设 $\theta_c=0$ .
 
-** AM
-   载波信号为 $c(t)=\cos(2\pi f_ct+\theta_c)$ , $f_c$ 为载波频率，$\theta_c$ 为载波起始相位。为方便讨论，假设 $\theta_c=0$ .
+    调制信号的波形为 $x(t)$ ,调制时，外加直流分量 $A_0$ ,输出已调信号的包络正比于 $x(t)$ ,其时域波形为：
+    \begin{equation}
+    s_{AM}(t)=[A_0+x(t)]\cos2\pi f_ct
+    \end{equation}
+    通常将 $S_{AM}(t)$ 写成
+    \begin{equation}\label{eq-sAMt}
+    s_{AM}(t)=[1+mx(t)]\cos2\pi f_ct
+    \end{equation}
+    其中， $m$ 为调制深度，使用包络检波等方法能恢复出原始信号，但为了保证不失真，必须满足 $1+mx(t)\geq 0$ .
+    已知信号 $x(t)$ 的频谱为 $X(f)$ ,则已调制信号的频谱为
+    \begin{equation}
+    S_{AM}(f)=\frac{1}{2}[\delta(f-f_c)+\delta(f+f_c)]+\frac{m}{2}[X(f-f_c)+X(f+f_c)]
+    \end{equation}
 
-   调制信号的波形为 $x(t)$ ,调制时，外加直流分量 $A_0$ ,输出已调信号的包络正比于 $x(t)$ ,其时域波形为：
+    式 ref:eq-sAMt 可以重写为
+    \begin{equation}
+    s_{AM}(t)=\Re{[1+mx(t)]\exp(j2\pi f_ct)]
+    \end{equation}
+
+    可知，已调信号的瞬时幅度是 $|1+mx(t)|$ , 瞬时相位是 $2\pi f_c t$ 。
+    *瞬时幅度是时变函数，去除载波线性相位后的瞬时相位是常数。*
+
+
+*** DSB-SC
+    AM调制又称常规双边带调幅。由于调制过程外加了直流分量，使得已调信号的频谱中含载波成分，但是载波不携带任何信息，信息完全由边带传输。通过抑制载波可以达到节省功率的目的。
+
+    从 ref:eq-sDSB_SCt 式中去除直流分量得到DSB-SC的时域波形：
+    \begin{equation}\label{eq-sDSB_SCt}
+    s_{\text{DSB}}(t)=mx(t)\cos2\pi f_ct
+    \end{equation}
+
+*** SSB-SC
+   在DSB-SC的基础上进一步滤除一个边带就能得到USB（上边带调制）和LSB（下边带调制）。
+   简而言之，单边带信号的频谱为：
    \begin{equation}
-   s_{AM}(t)=[A_0+x(t)]\cos2\pi f_ct
-   \end{equation}
-   通常将 $S_{AM}(t)$ 写成
-   \begin{equation}\label{eq-sAMt}
-   s_{AM}(t)=[1+mx(t)]\cos2\pi f_ct
-   \end{equation}
-   其中， $m$ 为调制深度，使用包络检波等方法能恢复出原始信号，但为了保证不失真，必须满足 $1+mx(t)\geq 0$ .
-   已知信号 $x(t)$ 的频谱为 $X(f)$ ,则已调制信号的频谱为
-   \begin{equation}
-   S_{AM}(f)=\frac{1}{2}[\delta(f-f_c)+\delta(f+f_c)]+\frac{m}{2}[X(f-f_c)+X(f+f_c)]
-   \end{equation}
+S_{\text{SSB}}(f)=S_{\text{DSB}}(f)H_{\text{DSB}}(f)
+\end{equation}
+其中
+\begin{equation}
+H_{\text{DSB}}(f)=\begin{cases}
+H_{\text{USB}}(f)=&\begin{cases}
+  1, & |f|>f_c\\
+  0, & |f|\leq f_c\end{cases}\\
+H_{\text{LSB}}(f)=&\begin{cases}
+  1, & |f|<f_c\\
+  0, & |f|\geq f_c\end{cases}
+  \end{cases}
+\end{equation}
 
-   式 ref:eq-sAMt 可以重写为
-   \begin{equation}
-   s_{AM}(t)=\Re{[1+mx(t)]\exp(j2\pi f_ct)]
-   \end{equation}
+时域表达式为
+\begin{align}
+s_{\text{USB}}(t)=&s_{\text{DSB}}(t)*h_\text{USB}(t)\\\notag
+=&[x(t)\cos2\pi f_ct ]*[\delta(t)-\frac{1}{\pi}\frac{\sin 2\pi f_ct}{t}]\\\notag
+=&\frac{1}{2} x(t)\cos2\pi f_ct-\frac{1}{2} \hat{x}(t)\sin2\pi f_ct
+\end{align}
+\begin{align}
+s_{\text{LSB}}(t)=&s_{\text{DSB}}(t)*h_\text{LSB}(t)\\\notag
+=&\frac{1}{2} x(t)\cos2\pi f_ct+\frac{1}{2} \hat{x}(t)\sin2\pi f_ct
+\end{align}
+其中 $\hat{x}(t)$ 为 $x(t)$ 的希尔伯特变换。
 
-   可知，已调信号的瞬时幅度是 $|1+mx(t)|$ , 瞬时相位是 $2\pi f_c t$ 。
-   *瞬时幅度是时变函数，去除载波线性相位后的瞬时相位是常数。*
+*** VSB
+     残余边带调制 VSB=SSB+载波。
 
+| 调制类型 | 优点           | 缺点         |
+|----------+----------------+--------------|
+| AM       | 解调方便       | 功耗高       |
+| DSB-SC   | 低功耗         | 冗余边带     |
+| SSB-SC   | 低功耗、低带宽 | 载波位置未知 |
+| VSB      | 低功耗、低带宽 |              |
 
 ** FM
    如果调制后*信号的幅度不变*，而瞬时频率是调制信号的线性函数，这样的调制方式称为频率调制。
@@ -149,6 +208,9 @@
    [[file:FM_spec.png]]
 
 
+
+
+
 ** 小结
    可以使用GNURadio 生成多种不同类型的调制信号cite:gandhiraj12_analog_digit_modul_toolk_softw_defin_radio。
 
@@ -161,7 +223,7 @@
 ** AM
    http://www.ece.uvic.ca/~elec350/lab_manual/ar01s01s05.html
 
-   从一个实例开始：
+   从一个[[file:gnuradio/AM_RX.grc][实例 ]]开始：
    [[file:modulation.org_imgs/20170828_093208_3244saB.png]]
    上面使用 GNU Radio 的 GRC 工具实现了一个AM信号的解调。从中可以看出，AM信号解调的主要步骤是：
    1. 取幅值
@@ -186,6 +248,30 @@
    2. 去DC
       去除直流分量后，就剩下了 $A_cm(t)$ ,此时已经恢复了原信号，只需要做适当的幅度增益调整就能得到调制信号。
 
+** DSB
+   基本过程同上，没有去除零频的步骤。
+** SSB
+   [[file:gnuradio/SSB.grc][实例]] ：
+[[file:modulation.org_imgs/20170830_083300_2670Fqr.png]]
+
+[[https://www.dsprelated.com/showarticle/176.php][一个详细的SSB参考资料]]
+
+*** USB模拟解调（SYNCHRONOUS DETECTION）：
+[[file:modulation.org_imgs/20170831_101928_11354KlK.png]]
+
+*** USB数字解调（SYNCHRONOUS DETECTION）：
+[[file:modulation.org_imgs/20170831_102117_11354XvQ.png]]
+
+*** LSB模拟解调（SYNCHRONOUS DETECTION）：
+[[file:modulation.org_imgs/20170831_102359_11354k5W.png]]
+
+simple ‘down-convert and lowpass filter’ synchronous detection demodulation process works for both USB and LSB transmitted signals. 
+
+*** 相位方法QUADRATURE PROCESSING――使用Hilbert
+[[file:modulation.org_imgs/20170831_103029_11354xDd.png]]
+需要理解[[file:Math/Hilbert.org][希尔伯特变换]]， 只有这种解调方法才能充分发挥SSB的频带利用率高的特点。
+进而可以借助例子理解这种解调的原理；
+[[file:modulation.org_imgs/20170831_143630_11354_cS.png]]
 * 参考资料
   优质的GNU radio 及信号相关的入门资料： http://www.ece.uvic.ca/~elec350
 * Footnotes

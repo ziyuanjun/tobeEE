@@ -1,10 +1,12 @@
 *_thumb.png
-ltximg/
+*ltximg/
 *.bbl
 *.aux
 *.pdf
 *.tex
+*.toc
 *.sh
+*.log
 *.html
 _minted*/
 *.dat

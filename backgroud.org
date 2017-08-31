@@ -1,0 +1,14 @@
+
+Ieee xplore
+Modulation recognition using hierarchical deep neural networks
+
+https://blog.kickview.com/modulation-recognition-using-deep-learning/
+
+通信信号调制识别方法研究
+http://www.xzbu.com/8/view-4919117.htmA
+
+
+一种新的雷达辐射源信号识别方法
+http://www.chinaaet.com/article/3000015664
+
+[[https://sanwen8.cn/p/5c3Knbq.html][新体制雷达给“信号分选”带来的困难该如何攻克？]]

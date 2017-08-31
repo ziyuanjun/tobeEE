@@ -1,0 +1,276 @@
+# -*- eval: (setq org-download-image-dir (file-name-sans-extension (buffer-name))); -*-
+# -*- org-export-babel-evaluate: nil; -*-
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../orgstyle.css"/>
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:t arch:headline author:t c:nil S:nil -:nil
+#+OPTIONS: creator:nil d:(not "En") date:t e:t email:nil f:t inline:t
+#+OPTIONS: num:t p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
+#+OPTIONS: title:t toc:t todo:t |:t 
+#+OPTIONS: ^:{}
+#+LATEX_CLASS: ctexart
+#+TITLE: 希尔伯特变换
+
+
+希尔伯特变换是一个通过实值信号生成复信号的过程。
+
+
+#+BEGIN_SRC dot :file ../Images/hilbert.png :exports results
+digraph G {
+          rankdir=LR ; 
+          in [shape=plaintext, label="x_r(t)\nX_r(f)"];
+          out [shape=plaintext, label="x_ht(t)\nX_ht(f)"];
+          H [shape=box,label ="希尔伯特变换\n h(t), H(f)"];
+          in->H->out;
+          }
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert.png]]
+
+\begin{equation}
+H(\omega)=\begin{cases}
+-j & \omega>0\\
+j & \omega<0\end{cases}
+\end{equation}
+
+下面使用图示分析法，分析希尔伯特变换在SSB信号解调中的作用。
+
+可以通过两条分别表示信号实部和虚部的数轴，如下：
+#+BEGIN_SRC asymptote :file ../Images/hilbert_understand.eps :exports results
+import geometry;
+import markers;
+size(7cm,0);
+draw((-4,0)--(4,0));label("Imag",(-4,0),W);
+draw((-4,2)--(4,2),red);label("Real",(-4,2),W,red);
+
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_understand.eps]]
+
+不过更为直观的是使用三维坐标：Re-Im-W 
+#+BEGIN_SRC asymptote :file ../Images/hilbert_understand_3d.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0), arrow=Arrow3,red);label("Re", (-2,0,0),E, red);
+draw((0,-3,0)--(0,3,0)); label("$\omega$", (0,3,0),E);
+draw((0,0,-2)--(0,0,2),arrow=Arrow3, blue); label("Im", (0,0,2),N,blue);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+A=zscale3(2)*A;
+B=xscale3(2)*B;
+draw(A,blue);
+draw(B,red);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_understand_3d.eps]]
+
+下面显示了一个实信号 $s(t)$ 的频谱 $S(\omega)$ ，该图的依据是实信号频谱的共轭对称性。
+#+BEGIN_SRC asymptote :file ../Images/hilbert_understand_3d_1.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,-4,0)--(0,4,0)); label("$\omega$", (0,4,0),E);
+draw((0,0,-2)--(0,0,2), blue,arrow=Arrow3); label("Im", (0,0,2),N,blue);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+
+A=zscale3(2)*A;
+B=xscale3(2)*B;
+real D=3;
+
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(shift(D*Y)*A,blue);
+draw(shift(D*Y)*B,red);
+draw(shift(-D*Y)*rotate(180, Y)*rotate(180, Z)*A,blue);
+draw(shift(-D*Y)*rotate(180, Y)*rotate(180, Z)*B,red);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_understand_3d_1.eps]]
+下面以此图出发来分析SSB信号的解调。
+\begin{align}
+s(t)\cos\omega_c t &= s(t)\frac{1}{2}[e^{j\omega_c t}+\e^{-j\omega_c t}]\\\notag
+& \rightarrow \frac{S(\omega)}{2}*[\delta(\omega-\omega_c)+\delta(\omega+\omega_c)]
+\end{align}
+
+
+#+BEGIN_SRC asymptote :file ../Images/hilbert_cos.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,-4,0)--(0,4,0)); label("$\omega$", (0,4,0),E);
+draw((0,0,-2)--(0,0,2), arrow=Arrow3,blue); label("Im", (0,0,2),N,blue);
+real D=3;
+
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(D*Y--D*Y-X,arrow=Arrow3);
+draw(-D*Y -- -X-D*Y,arrow=Arrow3);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_cos.eps]]
+
+#+BEGIN_SRC asymptote :file ../Images/hilbert_multCos.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,0,-2)--(0,0,2), arrow=Arrow3,blue); label("Im", (0,0,2),N,blue);
+draw((0,-8,0)--(0,8,0)); label("$\omega$", (0,8,0),E);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+A=zscale3(2)*A;
+B=xscale3(2)*B;
+real D=3;
+
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(shift(2*D*Y)*zscale3(0.5)*A,blue);
+draw(shift(2*D*Y)*xscale3(0.5)*B,red);
+draw(rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*A,blue);
+draw(rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B,red);
+draw(zscale3(0.5)*A,blue);
+draw(xscale3(0.5)*B,red);
+draw(shift(-2*D*Y)*rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*A,blue);
+draw(shift(-2*D*Y)*rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B,red);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_multCos.eps]]
+
+\begin{align}
+s(t)\sin\omega_c t &= s(t)\frac{1}{2j}[e^{j\omega_c t}-\e^{-j\omega_c t}]\\\notag
+& \rightarrow \frac{S(\omega)}{2}*[-j\delta(\omega-\omega_c)+j\delta(\omega+\omega_c)]
+\end{align}
+
+#+BEGIN_SRC asymptote :file ../Images/hilbert_sin.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,0,-2)--(0,0,2), arrow=Arrow3,blue); label("Im", (0,0,2),N,blue);
+draw((0,-4,0)--(0,4,0)); label("$\omega$", (0,4,0),E);
+real D=3;
+
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(D*Y--D*Y-Z,arrow=Arrow3);
+draw(-D*Y -- Z-D*Y,arrow=Arrow3);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_sin.eps]]
+
+#+BEGIN_SRC asymptote :file ../Images/hilbert_multSin.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,0,-2)--(0,0,2), arrow=Arrow3,blue); label("Im", (0,0,2),N,blue);
+draw((0,-8,0)--(0,8,0)); label("$\omega$", (0,8,0),E);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+real D=3;
+A=zscale3(2)*A;
+B=xscale3(2)*B;
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(rotate(-90, Y)*shift(2*D*Y)*zscale3(0.5)*A,red);
+draw(rotate(-90, Y)*shift(2*D*Y)*xscale3(0.5)*B,blue);
+draw(rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*A,red);
+draw(rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B,blue);
+draw(rotate(90,Y)*zscale3(0.5)*A,red);
+draw(rotate(90,Y)*xscale3(0.5)*B,blue);
+draw(rotate(90,Y)*shift(-2*D*Y)*rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*A,red);
+draw(rotate(90,Y)*shift(-2*D*Y)*rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B,blue);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_multSin.eps]]
+
+信号 $s(t)\cos(\omega_c t)$ 和 $s(t)\sin(\omega_c t)$ 经过LPF 后分别如下：
+
+
+#+BEGIN_SRC asymptote :file ../Images/hilbert_multCos_lpf.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,0,-2)--(0,0,2), arrow=Arrow3,blue); label("Im", (0,0,2),N,blue);
+draw((0,-4,0)--(0,4,0)); label("$\omega$", (0,4,0),E);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+real D=3;
+
+A=zscale3(2)*A;
+B=xscale3(2)*B;
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*A,blue);
+draw(rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B,red);
+draw(zscale3(0.5)*A,blue);
+draw(xscale3(0.5)*B,red);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_multCos_lpf.eps]]
+
+#+BEGIN_SRC asymptote :file ../Images/hilbert_multSin_lpf.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,0,-2)--(0,0,2), arrow=Arrow3,blue); label("Im", (0,0,2),N,blue);
+draw((0,-4,0)--(0,4,0)); label("$\omega$", (0,4,0),E);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+real D=3;
+A=zscale3(2)*A;
+B=xscale3(2)*B;
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*A,red);
+draw(rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B,blue);
+draw(rotate(90,Y)*zscale3(0.5)*A,red);
+draw(rotate(90,Y)*xscale3(0.5)*B,blue);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_multSin_lpf.eps]]
+
+再将 $s(t)\sin(\omega_c t)$ 经过 Hilbert 变换：
+
+#+BEGIN_SRC asymptote :file ../Images/hilbert_multSin_lpf_Hil.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,0,-2)--(0,0,2), arrow=Arrow3,blue); label("Im", (0,0,2),N,blue);
+draw((0,-4,0)--(0,4,0)); label("$\omega$", (0,4,0),E);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+real D=3;
+A=zscale3(2)*A;
+B=xscale3(2)*B;
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(rotate(90,Y)*rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*A,blue);
+draw(rotate(-90,Y)*rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B,red);
+draw(rotate(-90,Y)*rotate(90,Y)*zscale3(0.5)*A,blue);
+draw(rotate(90,Y)*rotate(90,Y)*xscale3(0.5)*B,red);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_multSin_lpf_Hil.eps]]
+
+对比 $s(t)\cos(\omega_c t)$ 支路的频谱（重绘如下），可以看出 
+[[file:../Images/hilbert_multCos_lpf.eps]]
+
+
+相加就恢复了USB 基带信号，而 cos 支路减 sin 支路就恢复了 LSB 信号。

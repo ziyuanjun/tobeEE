@@ -1,0 +1,14 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/ziyuan/Program/tobeEE/modulation.org
+
+
+* SSB-SC
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2017-08-29 二 10:10
+  :ARCHIVE_FILE: ~/Program/tobeEE/modulation.org
+  :ARCHIVE_OLPATH: 信号调制
+  :ARCHIVE_CATEGORY: modulation
+  :END:
+ 在DSB-SC的基础上进一步滤除一个边带就能得到USB（上边带调制）和LSB（下边带调制）。
