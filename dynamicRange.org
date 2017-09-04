@@ -1,0 +1,56 @@
+* 动态范围
+  In short, dynamic range describes the measurement between maximum and minimum values. 
+  http://www.ece.uvic.ca/~elec350/lab_manual/data/DynamicRange.pdf
+
+
+  指的是（系统）能*同时*处理的最强信号与最弱信号之间的差(dB)。
+
+** ADC 的动态范围
+*** DR=6n
+   采样动态范围指的是ADC能处理的最大电压值和最小电压之比，假设最大电压为 $V_{\text{max}}$ ，量化位数为 $n$ ,则
+
+   \begin{align}
+   DR=&\frac{V_\text{max}}{V_\text{max}/(2^{n}-1)}\\\notag
+   =&\lg(2^{n}-1)\\\notag
+   DR\text{(dB)}=&20*\lg(2^{n}-1) \\\notag
+   \end{align}
+
+   用 *量化位数 × 6dB* 可以粗略估计DR的整数部分：
+
+   | Resolution (Bits) | Dynamic Range (dB) | 6*n | 6.02*n |
+   |-------------------+--------------------+-----+--------|
+   |                 6 |               36.0 | 36  |  36.12 |
+   |                 8 |               48.1 | 48  |  48.16 |
+   |                10 |               60.2 | 60  |   60.2 |
+   |                12 |               72.2 | 72  |  72.24 |
+   |                14 |               84.3 | 84  |  84.28 |
+   |                16 |               96.3 | 96  |  96.32 |
+   |                18 |              108.4 | 108 | 108.36 |
+   |                20 |              120.4 | 120 |  120.4 |
+   #+TBLFM: $3=$1*6::$4=$1*6.02
+   #+BEGIN_QUOTE
+   \approx & n*20*log2  \\\notag
+   \approx& n*20*0.30103 \\\notag
+   \approx& 6.0206n \\\notag
+   \approx& 6n
+   #+END_QUOTE
+
+*** SNR = 6.02 N + 1.76 dB
+    http://www.analog.com/media/en/training-seminars/tutorials/MT-229.pdf
+    此处的SNR指的是信号与量化噪声之比，且噪声为整个频段的噪声0-fs/2。
+    如果做了信道化，噪声就不是整个频段的，只在给定带宽内：
+
+    SNR = 6.02 N + 1.76 + 10lg[fs/2/BW]
+
+    后一项被称为处理增益。特别地，如果使用FFT实现信道化，FFT的分析带宽为 fs/M (M为FFT的点数)。则
+
+    SNR = 6.02 N + 1.76 + 10lg[M/2]
+
+    [[http://www.analog.com/media/en/training-seminars/tutorials/MT-001.pdf][参考资料。]]
+
+
+
+
+* 灵敏度
+
+

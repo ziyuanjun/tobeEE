@@ -274,3 +274,128 @@ draw(rotate(90,Y)*rotate(90,Y)*xscale3(0.5)*B,red);
 
 
 相加就恢复了USB 基带信号，而 cos 支路减 sin 支路就恢复了 LSB 信号。
+
+
+在上面的分析中，我们假设了 SSB 的USB 和 LSB 分别为纯虚或纯实，如果更一般的情况呢？
+Hilbert 变化在上面的过程中到底扮演了什么角色，它的本质是什么？
+
+在 USB 和 LSB 中分别加入 cos 和 sin 的正弦波，使这两部分的信号都具有实部和虚部。
+
+#+BEGIN_SRC asymptote :file ../Images/hilbert_understand_3d_2.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,-4,0)--(0,4,0)); label("$\omega$", (0,4,0),E);
+draw((0,0,-2)--(0,0,2), blue,arrow=Arrow3); label("Im", (0,0,2),N,blue);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+path3 A1=(O+0.8*Y--0.8*Y-X);
+path3 B1=(O-0.3*Y-- -0.3*Y-Z);
+B=xscale3(2)*B;
+A=zscale3(2)*A;
+real D=3;
+
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(shift(D*Y)*A,blue); draw(shift(D*Y)*A1,red+linewidth(2pt));
+draw(shift(D*Y)*B,red); draw(shift(D*Y)*B1,blue);
+draw(shift(-D*Y)*rotate(180, Y)*rotate(180, Z)*A,blue);
+draw(shift(-D*Y)*rotate(180, Y)*rotate(180, Z)*A1,red+linewidth(2pt));
+draw(shift(-D*Y)*rotate(180, Y)*rotate(180, Z)*B,red);
+draw(shift(-D*Y)*rotate(180, Y)*rotate(180, Z)*B1,blue);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_understand_3d_2.eps]]
+混频、滤波输出如下：
+#+BEGIN_SRC asymptote :file ../Images/hilbert_multCos_lpf1.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,0,-2)--(0,0,2), arrow=Arrow3,blue); label("Im", (0,0,2),N,blue);
+draw((0,-4,0)--(0,4,0)); label("$\omega$", (0,4,0),E);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+path3 A1=(O+0.8*Y--0.8*Y-X);
+path3 B1=(O-0.3*Y-- -0.3*Y-Z);
+real D=3;
+A=zscale3(2)*A;
+B=xscale3(2)*B;
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*A,blue);
+draw(rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B,red);
+draw(rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*A1,red+linewidth(2pt));
+draw(rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B1,blue);
+draw(zscale3(0.5)*A,blue);
+draw(xscale3(0.5)*B,red);
+draw(xscale3(0.5)*A1,red+linewidth(2pt));
+draw(xscale3(0.5)*B1,blue);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_multCos_lpf1.eps]]
+
+#+BEGIN_SRC asymptote :file ../Images/hilbert_multSin_lpf1.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,0,-2)--(0,0,2), arrow=Arrow3,blue); label("Im", (0,0,2),N,blue);
+draw((0,-4,0)--(0,4,0)); label("$\omega$", (0,4,0),E);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+path3 A1=(O+0.8*Y--0.8*Y-X);
+path3 B1=(O-0.3*Y-- -0.3*Y-Z);
+real D=3;
+A=zscale3(2)*A;
+B=xscale3(2)*B;
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*A,red);
+draw(rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B,blue);
+draw(rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*A1,blue+linewidth(2pt));
+draw(rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*B1,red);
+draw(rotate(90,Y)*zscale3(0.5)*A,red);
+draw(rotate(90,Y)*xscale3(0.5)*A1,blue+linewidth(2pt));
+draw(rotate(90,Y)*xscale3(0.5)*B,blue);
+draw(rotate(90,Y)*zscale3(0.5)*B1,red);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_multSin_lpf1.eps]]
+经Hilbert 变换：
+
+#+BEGIN_SRC asymptote :file ../Images/hilbert_multSin_lpf_Hil1.eps :exports results
+import three;
+import markers;
+size(8cm,0);
+draw((2,0,0)--(-2,0,0),arrow=Arrow3, red);label("Re", (-2,0,0),E, red);
+draw((0,0,-2)--(0,0,2), arrow=Arrow3,blue); label("Im", (0,0,2),N,blue);
+draw((0,-4,0)--(0,4,0)); label("$\omega$", (0,4,0),E);
+path3 A=(0,0,0)--(0,0.3,-0.7)--(0,0.9,-1)--(0,1,0)--cycle;
+path3 B=arc(c=(0,-1,0),(0,0,0),(-1,-1,0))--(0,-1,0)--cycle;
+path3 A1=(O+0.8*Y--0.8*Y-X);
+path3 B1=(O-0.3*Y-- -0.3*Y-Z);
+real D=3;
+A=zscale3(2)*A;
+B=xscale3(2)*B;
+dot(D*Y);label("$\omega_c$",D*Y,SW);
+dot(-D*Y);label("$-\omega_c$",-D*Y,S);
+draw(rotate(90,Y)*rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*A,blue);
+draw(rotate(90,Y)*rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*A1,red+linewidth(2pt));
+draw(rotate(-90,Y)*rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*xscale3(0.5)*B,red);
+draw(rotate(-90,Y)*rotate(-90,Y)*rotate(180, Y)*rotate(180, Z)*zscale3(0.5)*B1,blue);
+draw(rotate(-90,Y)*rotate(90,Y)*zscale3(0.5)*A,blue);
+draw(rotate(-90,Y)*rotate(90,Y)*zscale3(0.5)*A1,red+linewidth(2pt));
+draw(rotate(90,Y)*rotate(90,Y)*xscale3(0.5)*B,red);
+draw(rotate(90,Y)*rotate(90,Y)*xscale3(0.5)*B1,blue);
+#+END_SRC
+
+#+RESULTS:
+[[file:../Images/hilbert_multSin_lpf_Hil1.eps]]
+可以看出，解调过程依然有效。Hilbert 变换前后，原来信号频谱 x(f)+jy(f) 实部偶对称、虚部奇对称；变换后，原来的实部会变成虚部，原来的虚部会变成实部，同时保持共轭对称性。
+
+所以在某个频点 w_c 两边的频谱，一定可以用这种方式分开。

@@ -218,7 +218,6 @@ s_{\text{LSB}}(t)=&s_{\text{DSB}}(t)*h_\text{LSB}(t)\\\notag
   How to capture raw IQ data from a RTL-SDR dongle and FM demodulate with MATLAB http://www.aaronscher.com/wireless_com_SDR/RTL_SDR_AM_spectrum_demod.html
   Broadcast FM RDS Decode http://www.joshisanerd.com/projects/sdr_snippets/gnuradio_and_ipython//2%20Broadcast%20FM%20RDS%20Decode.html
 
-
 * 信号解调
 ** AM
    http://www.ece.uvic.ca/~elec350/lab_manual/ar01s01s05.html
@@ -270,8 +269,33 @@ simple ‘down-convert and lowpass filter’ synchronous detection demodulation 
 *** 相位方法QUADRATURE PROCESSING――使用Hilbert
 [[file:modulation.org_imgs/20170831_103029_11354xDd.png]]
 需要理解[[file:Math/Hilbert.org][希尔伯特变换]]， 只有这种解调方法才能充分发挥SSB的频带利用率高的特点。
-进而可以借助例子理解这种解调的原理；
+进而可以借助例子理解这种解调的原理；Weaver demodulator 是先得到信号的IQ两路，相当于下图中 Hilbert 变换在 sin 支路的最前面。
 [[file:modulation.org_imgs/20170831_143630_11354_cS.png]]
+** FM
+
+   将 ref:eq-sFMt 式下变频后，写成实际的采样信号的形式：
+
+   \begin{equation}\label{eq-sFM_downt}
+   s_{\text{FM\_d}}(t_n)=A\cos[2\pi k_f\sum_{i=-\infty}^n 1/f_s x(t_i)]
+   \end{equation}
+
+   其复信号表示为：
+
+   \begin{equation}
+   s_\text{FM\_d}(t_n)=A\exp[j2\pi k_f\sum_{i=-\infty}^n 1/f_s x(t_i)]
+   \end{equation}
+
+   解调FM信号首先要通过微分运算得出，在数字运算中，使用差分，具体做法是
+   \begin{equation}
+s_\text{FM\_d}(t_n)*\text{conj}(s_\text{FM\_d}(t_{n-1}))=A\exp[j2\pi k_f 1/f_s x(t_n)]
+\end{equation}
+
+   取信号的幅角为： $\frac{2\pi k_f}{f_s}x(t_n)$ ，即恢复出了原信号。
+经过实验，在GNU Radio 中，延迟、共轭相乘、取幅角的效果和WBFM receiver 的效果相当：
+[[file:modulation.org_imgs/20170904_200120_4299KbN.png]]
+
+
+
 * 参考资料
   优质的GNU radio 及信号相关的入门资料： http://www.ece.uvic.ca/~elec350
 * Footnotes
