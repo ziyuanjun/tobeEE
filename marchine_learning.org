@@ -1,0 +1,68 @@
+# -*- eval: (setq org-download-image-dir (file-name-sans-extension (buffer-name))); -*-
+# -*- org-export-babel-evaluate: nil; -*-
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../orgstyle.css"/>
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:t arch:headline author:t c:nil S:nil -:nil
+#+OPTIONS: creator:nil d:(not "En") date:t e:t email:nil f:t inline:t
+#+OPTIONS: num:t p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
+#+OPTIONS: title:t toc:t todo:t |:t 
+#+OPTIONS: ^:{}
+#+LATEX_CLASS: ctexart
+#+STARTUP: entitiespretty:t
+#+TITLE: Machine Learning Notes
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.0.50.2 (Org mode 9.0.4)
+
+监督学习和无监督学习没有正式的定义，常见的划分如下图：
+
+  #+BEGIN_SRC dot :file Images/ml_classify.png :results file
+  digraph G {
+  ml [label="机器学习"];
+  accord [shape=box, label="学习过程中的不同经验"];
+  usml [label="无监督学习"];
+  sml [label="监督学习"];
+  ml->accord->{usml,sml};
+  a1 [label="密度估计"];
+  a2 [label="合成"];
+  a3 [label="去噪"];
+  a4 [label="聚类"];
+  usml->{a1,a2,a3,a4};
+  b1 [label="回归"];
+  b2 [label="分类"];
+  b3 [label="结构化输出"];
+  sml->{b1,b2,b3};
+       }
+  #+END_SRC
+
+  #+RESULTS:
+  [[file:Images/ml_classify.png]]
+
+
+
+- 正规方程（normal equation）
+- 线性回归（linear regression）
+- 泛化（generalization）
+- 训练误差（training error）
+- 泛化误差（generalization error）（也被称为 测试误差（test error））
+- 欠拟合（underfitting）
+  欠拟合是指模型不能在训练集上获得足够低的误差。
+- 过拟合（overfitting）
+  过拟合是指训练误差和和测试误差之间的差距太大。
+- 模型的容量（capacity）
+  模型的容量是指其拟合各种函数的能力。容量低的模型可能很难拟合训练集。容量高的模型可能会过拟合，因为记住了不适用于测试集的训练集性质。
+- 模型的表示容量（representational capacity）
+  模型规定了调整参数降低训练目标时，学习算法可以从哪些函数族中选择函数。
+- 学习算法的有效容量（effective capacity）
+- VC 维度
+  VC 维定义为该分类器能够分类的训练样本的最大数目。假设存在 m 个不同 x 点的训练集，分类器可以任意地标记该 m 个不同的 x 点， VC 维被定义为 m 的最大可能值
+- 正则化（regularization）
+  正则化是指我们修改学习算法，使其降低泛化误差而非训练误差。
+- 超参数
+- 验证集（validation set）
+ 如果在训练集上学习超参数，这些超参数总是趋向于最大可能的模型容量，导致过拟合。为了解决这个问题，我们需要一个训练算法观测不到的 验证集样本。
+- 交叉验证
+  k-折交叉验证算法
+ 
+
+* 什么是 MNISTC
+  MNISTC 数据分成两部分，其中60000幅手写数字图用于训练，数据来源是250人（一半为美国人口普查局志愿者，另一半为中学生），10000幅用于测试，数据来源是另外250人（同样由普查局的志愿者和中学生组成）。

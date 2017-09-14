@@ -1,14 +1,44 @@
 
-Ieee xplore
-Modulation recognition using hierarchical deep neural networks
-
-https://blog.kickview.com/modulation-recognition-using-deep-learning/
-
-通信信号调制识别方法研究
-http://www.xzbu.com/8/view-4919117.htmA
-
-
 一种新的雷达辐射源信号识别方法
 http://www.chinaaet.com/article/3000015664
 
 [[https://sanwen8.cn/p/5c3Knbq.html][新体制雷达给“信号分选”带来的困难该如何攻克？]]
+
+
+** 使用代码生成 dataset
+ 基本途径：使用 GNU Radio 生成数据集
+
+ 可以下载一个比较通用的数据集，信号的生成代码位于[[https://github.com/radioML/dataset][github]],
+ The dataset contains 11 modulation types generated using GNU Radio’s digital and analog modulators.
+
+ 下载后运行 generate_RML2016.10a.py 发现错误：
+ ImportError: No module named mediatools
+ 其中的 mediatools 实际上是 gr-mediatools, 需要安装gr-mediatools 参考[[https://github.com/radioML/dataset/issues/6][issue6]]
+
+ 下载 gr-mediatools 编译安装时，出现错误：
+ AVCODEC_INCLUDE_DIR NOT FOUND.
+ 解决参见[[https://github.com/osh/gr-mediatools/issues/4][issue4]].
+
+ sudo apt-get install libavcodec-dev libavformat-dev
+
+ 依然有错：
+ File "/usr/local/lib/python2.7/dist-packages/gnuradio/blocks/blocks_swig0.py", line 1095, in make
+     return _blocks_swig0.file_source_make(itemsize, filename, repeat)
+ RuntimeError: can't open file
+
+ 这是因为版本库中还包含没有clone 下来的子库 参考[[https://github.com/radioML/dataset/issues/5][issue5]]。 解决方法：
+ git clone --recursive XXX
+
+ 依然有错：
+ File "/home/ziyuan/Program/dataset/transmitters.py", line 32, in __init__
+     transmitter_mapper.__init__(self, mapper.BPSK,
+ AttributeError: 'module' object has no attribute 'BPSK'
+
+ 解决方法：
+ 安装 gr-mapper 
+
+* Footnotes
+
+[fn:2] 
+
+[fn:1] 

@@ -30,7 +30,7 @@
   Ampli_M->DSB_SC;
   Ampli_M->SSB->{USB,LSB};
   Ampli_M->VSB;
-  
+
   }
   #+END_SRC
 
@@ -72,44 +72,44 @@
     \end{equation}
 
 *** SSB-SC
-   在DSB-SC的基础上进一步滤除一个边带就能得到USB（上边带调制）和LSB（下边带调制）。
-   简而言之，单边带信号的频谱为：
-   \begin{equation}
-S_{\text{SSB}}(f)=S_{\text{DSB}}(f)H_{\text{DSB}}(f)
-\end{equation}
-其中
-\begin{equation}
-H_{\text{DSB}}(f)=\begin{cases}
-H_{\text{USB}}(f)=&\begin{cases}
-  1, & |f|>f_c\\
-  0, & |f|\leq f_c\end{cases}\\
-H_{\text{LSB}}(f)=&\begin{cases}
-  1, & |f|<f_c\\
-  0, & |f|\geq f_c\end{cases}
-  \end{cases}
-\end{equation}
+    在DSB-SC的基础上进一步滤除一个边带就能得到USB（上边带调制）和LSB（下边带调制）。
+    简而言之，单边带信号的频谱为：
+    \begin{equation}
+ S_{\text{SSB}}(f)=S_{\text{DSB}}(f)H_{\text{DSB}}(f)
+ \end{equation}
+    其中
+    \begin{equation}
+    H_{\text{DSB}}(f)=\begin{cases}
+    H_{\text{USB}}(f)=&\begin{cases}
+      1, & |f|>f_c\\
+      0, & |f|\leq f_c\end{cases}\\
+    H_{\text{LSB}}(f)=&\begin{cases}
+      1, & |f|<f_c\\
+      0, & |f|\geq f_c\end{cases}
+      \end{cases}
+    \end{equation}
 
-时域表达式为
-\begin{align}
-s_{\text{USB}}(t)=&s_{\text{DSB}}(t)*h_\text{USB}(t)\\\notag
-=&[x(t)\cos2\pi f_ct ]*[\delta(t)-\frac{1}{\pi}\frac{\sin 2\pi f_ct}{t}]\\\notag
-=&\frac{1}{2} x(t)\cos2\pi f_ct-\frac{1}{2} \hat{x}(t)\sin2\pi f_ct
-\end{align}
-\begin{align}
-s_{\text{LSB}}(t)=&s_{\text{DSB}}(t)*h_\text{LSB}(t)\\\notag
-=&\frac{1}{2} x(t)\cos2\pi f_ct+\frac{1}{2} \hat{x}(t)\sin2\pi f_ct
-\end{align}
-其中 $\hat{x}(t)$ 为 $x(t)$ 的希尔伯特变换。
+    时域表达式为
+    \begin{align}
+    s_{\text{USB}}(t)=&s_{\text{DSB}}(t)*h_\text{USB}(t)\\\notag
+    =&[x(t)\cos2\pi f_ct ]*[\delta(t)-\frac{1}{\pi}\frac{\sin 2\pi f_ct}{t}]\\\notag
+    =&\frac{1}{2} x(t)\cos2\pi f_ct-\frac{1}{2} \hat{x}(t)\sin2\pi f_ct
+    \end{align}
+    \begin{align}
+    s_{\text{LSB}}(t)=&s_{\text{DSB}}(t)*h_\text{LSB}(t)\\\notag
+    =&\frac{1}{2} x(t)\cos2\pi f_ct+\frac{1}{2} \hat{x}(t)\sin2\pi f_ct
+    \end{align}
+    其中 $\hat{x}(t)$ 为 $x(t)$ 的希尔伯特变换。
 
 *** VSB
-     残余边带调制 VSB=SSB+载波。
+    残余边带调制 VSB=SSB+载波。
 
-| 调制类型 | 优点           | 缺点         |
-|----------+----------------+--------------|
-| AM       | 解调方便       | 功耗高       |
-| DSB-SC   | 低功耗         | 冗余边带     |
-| SSB-SC   | 低功耗、低带宽 | 载波位置未知 |
-| VSB      | 低功耗、低带宽 |              |
+    | 调制类型 | 优点           | 缺点         |
+    |----------+----------------+--------------|
+    | AM       | 解调方便       | 功耗高       |
+    | DSB-SC   | 低功耗         | 冗余边带     |
+    | SSB-SC   | 低功耗、低带宽 | 载波位置未知 |
+    | VSB      | 低功耗、低带宽 |              |
 
 ** FM
    如果调制后*信号的幅度不变*，而瞬时频率是调制信号的线性函数，这样的调制方式称为频率调制。
@@ -210,7 +210,6 @@ s_{\text{LSB}}(t)=&s_{\text{DSB}}(t)*h_\text{LSB}(t)\\\notag
 
 
 
-
 ** 小结
    可以使用GNURadio 生成多种不同类型的调制信号cite:gandhiraj12_analog_digit_modul_toolk_softw_defin_radio。
 
@@ -218,6 +217,49 @@ s_{\text{LSB}}(t)=&s_{\text{DSB}}(t)*h_\text{LSB}(t)\\\notag
   How to capture raw IQ data from a RTL-SDR dongle and FM demodulate with MATLAB http://www.aaronscher.com/wireless_com_SDR/RTL_SDR_AM_spectrum_demod.html
   Broadcast FM RDS Decode http://www.joshisanerd.com/projects/sdr_snippets/gnuradio_and_ipython//2%20Broadcast%20FM%20RDS%20Decode.html
 
+  Ieee xplore
+  Modulation recognition using hierarchical deep neural networks
+
+  https://blog.kickview.com/modulation-recognition-using-deep-learning/
+
+  通信信号调制识别方法研究
+  http://www.xzbu.com/8/view-4919117.htmA
+
+** TODO AMC+ML
+  dataset 研究调制体制识别的数据集
+  1. [[file:backgroud.org][使用代码生成 dataset]]
+  2. 学习深度学习
+  3. 学习GNU radio
+     总结 c++ 的 OOT module 编写方式
+  4.  信号检测－>调制识别： 学习 gr-inspector
+     解读 [[file:~/gr-inspector/lib/signal_detector_cvf_impl.cc][signal_detector_cvf_impl]] 
+*** 解读 signal_detector
+    - make()
+    - signal_detector_cvf_impl()
+      - set properties
+      - allocate buffers
+      - d_fft
+      - d-avg_filter
+      - build_window()
+      - message register
+      - write log header
+    - [[file:~/gr-inspector/lib/signal_detector_cvf_impl.cc::357][work()]]
+      - build_freq()
+      - periodogram()
+      - averaging, threshold
+      - find_signal_edges()
+        该函数返回 vector<vector int> flank :
+        1. 遍历频谱，找到高于门限的频率位置 pos
+        2. 根据 pos 得出信号边沿 flank：
+           - pos 为空，则 flank 也为空；
+           - pos size=1, flank=[pos[0],pos[0]]
+           - pos size=2, 如果pos 中存储的两个频率位置是相邻的，则认为 pos 存储的是同一信号的两个边沿  flank=[pos[0],pos[1]]；否则，flank=[pos[0],pos[0], pos[1],pos[1]] （认为是两个信号）
+           - pos size >2, 根据 pos[i] pos[i+1] 是否相邻，给出所有信号的边沿对。
+        3. rf_map: vector<vector float> 是一组(中心频率，带宽)对构成的 vector，列入这个 vector 的信号带宽有一个下限 d_min_bw, 其大小在本模块构造时提供。
+      - 模块的 out 为 fft 频谱。
+      - 当 rf_map 发生变化时（有新的信号检测到，或已检出的信号发生了变化）。打包并发送 message，写 logfile.
+        
+  
 * 信号解调
 ** AM
    http://www.ece.uvic.ca/~elec350/lab_manual/ar01s01s05.html
@@ -251,26 +293,26 @@ s_{\text{LSB}}(t)=&s_{\text{DSB}}(t)*h_\text{LSB}(t)\\\notag
    基本过程同上，没有去除零频的步骤。
 ** SSB
    [[file:gnuradio/SSB.grc][实例]] ：
-[[file:modulation.org_imgs/20170830_083300_2670Fqr.png]]
+   [[file:modulation.org_imgs/20170830_083300_2670Fqr.png]]
 
-[[https://www.dsprelated.com/showarticle/176.php][一个详细的SSB参考资料]]
+   [[https://www.dsprelated.com/showarticle/176.php][一个详细的SSB参考资料]]
 
 *** USB模拟解调（SYNCHRONOUS DETECTION）：
-[[file:modulation.org_imgs/20170831_101928_11354KlK.png]]
+    [[file:modulation.org_imgs/20170831_101928_11354KlK.png]]
 
 *** USB数字解调（SYNCHRONOUS DETECTION）：
-[[file:modulation.org_imgs/20170831_102117_11354XvQ.png]]
+    [[file:modulation.org_imgs/20170831_102117_11354XvQ.png]]
 
 *** LSB模拟解调（SYNCHRONOUS DETECTION）：
-[[file:modulation.org_imgs/20170831_102359_11354k5W.png]]
+    [[file:modulation.org_imgs/20170831_102359_11354k5W.png]]
 
-simple ‘down-convert and lowpass filter’ synchronous detection demodulation process works for both USB and LSB transmitted signals. 
+    simple ‘down-convert and lowpass filter’ synchronous detection demodulation process works for both USB and LSB transmitted signals. 
 
 *** 相位方法QUADRATURE PROCESSING――使用Hilbert
-[[file:modulation.org_imgs/20170831_103029_11354xDd.png]]
-需要理解[[file:Math/Hilbert.org][希尔伯特变换]]， 只有这种解调方法才能充分发挥SSB的频带利用率高的特点。
-进而可以借助例子理解这种解调的原理；Weaver demodulator 是先得到信号的IQ两路，相当于下图中 Hilbert 变换在 sin 支路的最前面。
-[[file:modulation.org_imgs/20170831_143630_11354_cS.png]]
+    [[file:modulation.org_imgs/20170831_103029_11354xDd.png]]
+    需要理解[[file:Math/Hilbert.org][希尔伯特变换]]， 只有这种解调方法才能充分发挥SSB的频带利用率高的特点。
+    进而可以借助例子理解这种解调的原理；Weaver demodulator 是先得到信号的IQ两路，相当于下图中 Hilbert 变换在 sin 支路的最前面。
+    [[file:modulation.org_imgs/20170831_143630_11354_cS.png]]
 ** FM
 
    将 ref:eq-sFMt 式下变频后，写成实际的采样信号的形式：
@@ -291,8 +333,8 @@ s_\text{FM\_d}(t_n)*\text{conj}(s_\text{FM\_d}(t_{n-1}))=A\exp[j2\pi k_f 1/f_s x
 \end{equation}
 
    取信号的幅角为： $\frac{2\pi k_f}{f_s}x(t_n)$ ，即恢复出了原信号。
-经过实验，在GNU Radio 中，延迟、共轭相乘、取幅角的效果和WBFM receiver 的效果相当：
-[[file:modulation.org_imgs/20170904_200120_4299KbN.png]]
+   经过实验，在GNU Radio 中，延迟、共轭相乘、取幅角的效果和WBFM receiver 的效果相当：
+   [[file:modulation.org_imgs/20170904_200120_4299KbN.png]]
 
 
 
