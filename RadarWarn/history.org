@@ -1,0 +1,336 @@
+# -*- eval: (setq org-download-image-dir (file-name-sans-extension (buffer-name))); -*-
+# -*- org-export-babel-evaluate: nil; -*-
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../orgstyle.css"/>
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:t arch:headline author:t c:nil S:nil -:nil
+#+OPTIONS: creator:nil d:(not "En") date:t e:t email:nil f:t inline:t
+#+OPTIONS: num:t p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
+#+OPTIONS: title:t toc:t todo:t |:t 
+#+OPTIONS: ^:{}
+#+LATEX_CLASS: ctexart
+#+STARTUP: entitiespretty:t
+#+TITLE: 雷达告警的那些事
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+
+THE RADAR WARNING STORY
+
+
+
+
+:En:
+IN THE BEGINNING YEAR: 1965
+In July 1965, an American F-4 Phantom II was shot down over North Vietnam. This loss represented the first American aircraft to be downed by an SA-2 Surface-to-Air Missile (SAM) in the Southeast Asian conflict. This event heralded the beginning of a serious and lethal new challenge to American air superiority.
+:END:
+* 1965:伊始
+1965年7月，一架美国F-4“幻影II”在北越被击落。这是第一架在东南亚冲突中被SA-2地对空导弹（SAM）击落的美国飞机。这一事件预示着一场针对美国空中优势的严重且致命新挑战拉开序幕。
+
+:En:
+In the succeeding months of the war, American aircraft would attempt to penetrate major targets in the North, and they would fly their missions into the teeth of the most sophisticated air defense network ever deployed in history.
+The North Vietnam air defense system, as it evolved in the mid to late 1960s, consisted of AntiAircraft Artillery (AAA), SAMs and MIG fighter aircraft, all closely coordinated through the use of communications and radar. The need to counter this lethal new threat was painfully obvious as losses of aircraft and crew grew to unacceptable levels.
+Brigadier General K.C. Dempster,
+then Director of Operational Requirements and Development Plans, U.S. Air Force Headquarters, was selected to head a Blue Ribbon Air Staff Task Force to investigate methods of countering these lethal weapon systems in an effort to provide warning and protection to U.S. air crews against this new threat.
+The need for aircraft self-protection assets was the driving force behind a seminar held in August 1965, and led to a recommendation for the development of aircraft avionics systems capable of detecting and destroying the controlling radars in these defense networks. The concept was appropriately named Wild Weasel, an animal known to hunt vermin.
+Almost in disastrous parallel, a Navy
+RA-5C reconnaissance aircraft was lost over Dienbienphu. Again, the culprit was the SA-2.
+A $5.5 million aircraft was lost, causing considerable comment that the aircraft was too expensive to introduce into combat. Soviet-built SAM technology was threatening to destroy a much needed intelligence capability that had been developed and deployed at a cost of several hundred million dollars.
+In parallel with the Dempster panel, DDR&E convened a committee to evaluate options and make selections for the development of a warning and jamming equipment suite. It was decided that of all the proposals received, a concept called Vector IV offered the best potential solution to the warning problem. As a result of this decision, a then-small company based in Northern California rocketed into national focus. The Vector IV concept was proposed by Applied Technology, Inc.
+:END:
+在战争的后续几个月中，美国飞机试图渗透北方的主要目标，他们的飞行任务要求飞机必须进入当时史上部署最复杂的防空网络。
+北越防空系统是在20世纪60年代中后期发展起来的，由反飞机炮（AAA）、地空导弹和MIG战斗机组成，通过通信和雷达进行密切协调。由于飞机和机组人员的损失增加到不可接受的水平，因此迫切需要应对这种致命的新威胁。
+K.C.登普斯特准将，后任美国空军总部的作战需求和发展计划部主任，被选中组建一支蓝丝带空军参谋人员，负责研究打击这些致命武器系统的方法，以便为美国空勤人员提供警示和保护，防止这一新威胁。
+飞机自卫能力的需求源自1965年8月举行的研讨会背后的驱动力，并提出了开发航空电子设备系统用于探测和摧毁防御网中控制雷达的建议。这个概念被恰当地命名为野鼬任务（Wild Weasel），鼬，即黄鼠狼，是一种以捕杀害虫而闻名的动物。
+祸不单行，海军也在越南Dien bien phu损失了一架RA-5C侦察机。罪魁祸首再一次是SA-2导弹。一架价值550万美元的飞机丢失了，引起了相当多的评论，认为该飞机太昂贵而无法引入战斗。苏联制造的SAM技术对以数亿美元成本开发和部署的急需的智能作战能力构成了毁灭性的威胁。与Dempster面板并行，DDR＆E召集了一个委员会来评估选项，并选择开发警告和干扰设备套件。在决定收到的所有提案中，一个名为Vector IV的概念为警告问题提供了最佳的潜在解决方案。这一决定也使得一家总部位于北加州的小型公司平步青云，飙升为国家焦点。Vector IV概念由Applied Technology，Inc.提出。
+
+:En:
+In November 1965, the USAF Sacramento Air Material Area awarded Applied Technology a contract for 500 AN/APR-25s, the system nomenclature for the Vector IV concept. The system was based on the use of crystal-video detection techniques in the threat bands only, where the hostile equipment’s relative direction was resolved by a CRT display using vectorial inputs from four antenna patterns. Thus, the initial concept name, Vector IV.
+:END:
+1965年11月，美国空军萨克拉门托空气材料区授予应用技术公司500 AN / APR-25的合同，这是Vector IV概念的系统命名法。该系统仅基于在威胁带中使用晶体视频检测技术，其中敌方设备的相对方向通过使用来自四个天线模式的矢量输入的CRT显示器来解决。因此，最初的概念名称，Vector IV。
+
+
+:En:
+Until this time, Applied Technology had been primarily involved in strategic reconnaissance and intelligence technology programs where a large production run consisted of 10 systems. The impact of the AN/APR-25 award was huge. Further, the U.S. Navy awarded Applied Technology a production order to outfit its aircraft with this critical new protective asset.
+:END:
+在此之前，应用技术公司主要参与战略侦察和情报技术计划，其中大型生产运行由10个系统组成。 AN / APR-25奖项的影响巨大。此外，美国海军还向应用技术公司颁发了一份生产订单，为其飞机配备了这一重要的新保护资产。
+
+
+:En:
+Very little was known about the threat in those early days, and the design philosophies of warning systems were based upon gathering as much signal information as available. Later this philosophy would change as the need for sorting analysis and prioritization of lethal pulses became semi-automatic.
+:END:
+对早期的威胁知之甚少，警告系统的设计理念基于收集尽可能多的信号信息。后来这种理念会发生变化，因为对分类分析和致命脉冲优先级的需求变得半自动化。
+
+
+:En:
+On a Friday the 13th in 1966, Applied Technology’s AN/APR-26 radar warning receiver performed successfully in a combat mission and added yet another success for the growing company. In the 1966 – 1967 time frame, Applied Technology was shipping radar homing and warning systems at a rate of 250 per month. Employment levels approached 1,400, a seven-fold increase in just two years.
+:END:
+应用技术公司的AN / APR-26雷达警告接收器于1966年的一个星期五，在战斗任务中成功完成，并为这家不断发展的公司带来了又一次成功。在1966年至1967年的时间框架内，应用技术公司以每月250个的速度运送雷达制导和预警系统。就业水平接近1,400，仅仅两年就增长了7倍。
+
+
+:En:
+The AN/APR-36 and AN/APR-37 were updates to U.S. Air Force AN/APR-25/26 systems. Continually pressing the edge of technology for new ways to protect aircraft and crews, Applied Technology developed and added features such as automatic time/video correlation circuits. At the same time, the company developed a superheterodyne analysis receiver in the form of the AN/APR-35 system.
+:END:
+AN / APR-36和AN / APR-37是对美国空军AN / APR-25/26系统的更新。应用技术公司不断突破技术优势，为保护飞机和机组提供新的方法，开发并增加了自动时间/视频相关电路等功能。与此同时，该公司开发了AN / APR-35系统形式的超外差分析接收机。
+
+
+:En:
+This second generation system was quickly fitted into all Wild Weasel aircraft. The new equipment provided the Electronic Warfare Operators 
+:END:
+第二代系统很快就安装在所有Wild Weasel飞机上。新设备提供了电子战操作员
+
+
+
+:En:
+It was during their support of strike missions into North Vietnam that the Wild Weasels won their motto of “first in and last out.” The Weasels flew well in advance of strike aircraft and actually baited hostile SAMs to clear a safe corridor for the follower aircraft to enter and reach the target. The Weasels rolled back the SAM sites through bait or attack of the sites. As they detected SAMs along the strike route, they also provided warning to strike aircraft when they detected a SAM launch. This provided an instant alert and maximum reaction time for evasive action. U.S. Air Force B-52s were never sent into North Vietnam, or any other areas within possible range of SAMs, without a Wild Weasel escort.
+:END:
+正是在他们支持进入北越的罢工任务期间，野鼬鼠队赢得了“先进先出”的座右铭。黄鼠狼在罢工飞机前飞得很好，并实际上诱使敌对地空导弹为随动飞机清理安全走廊进入并达到目标。黄鼠狼通过诱饵或网站攻击回滚了SAM网站。当他们沿着攻击路线探测到地空导弹时，他们还在发现SAM发射时向飞机发出警告。这为回避行动提供了即时警报和最长反应时间。美国空军的B-52从未被派往越南北部或SAM可能范围内的任何其他区域，没有野鼬鼠护航。
+
+
+:En:
+New technology had been deployed at the scene of the battle, and the use of Applied Technology’s radar homing and warning equipment played a key role in the success of the engagements.
+:END:
+在战斗现场部署了新技术，应用技术公司的雷达寻的和警告设备的使用在项目的成功中发挥了关键作用。
+
+
+:En:
+The action taken to interface this new technology with needs of a pilot and an EWO required unprecedented military and industry teamwork. Tense pilots, busy flying their aircraft with full knowledge of their illumination by a SAM, did not have the time to work with a potentiometer or a confusing jumble of strobes. The action to address this issue was is one of the most critical successes of the Wild Weasel program. Teamwork between the pilot and EWO developed to a point where communications were instantaneous, with the EWO making quick interpretations from displays and providing instructions to the pilot as to “which way to duck.” When a SAM was fired at a Weasel aircraft, there was no time for discussion as survival demanded speed. The improvements made in operator interface began to pay off in lifesaving dividends.
+:END:
+将这项新技术与飞行员和EWO的需求联系起来所采取的行动需要前所未有的军事和行业团队合作。紧张的飞行员，忙着飞行他们的飞机，充分了解他们的SAM照明，没有时间使用电位器或混乱的闪光灯。解决这个问题的行动是Wild Weasel计划最重要的成功之一。飞行员和EWO之间的团队合作发展到了即时通信的地步，EWO通过显示器快速解释并向飞行员提供关于“哪种方式躲避”的指示。当SAM在黄鼠狼飞机上发射时，有没有时间进行讨论，因为生存需要速度。操作员界面的改进开始在生活中得到回报 - 节省红利。
+
+
+:En:
+At the same time, new information continued to surface about the subtleties of the various threats. After analysis, new logic and techniques were consistently incorporated in true Quick Reaction Capability (QRC) fashion in operational systems on board strike aircraft. When a new requirement originated in Da Nang, in some cases, only 72 hours passed before an Applied Technology representative was performing installation changes.
+:END:
+与此同时，关于各种威胁的微妙之处的新信息继续浮出水面。经过分析，新的逻辑和技术始终以真正的快速反应能力（QRC）方式纳入了攻击机操作系统。当新的要求源自岘港时，在某些情况下，在应用技术代表执行安装更改之前仅过了72小时。
+
+
+
+* TIMES CHANGE
+:En:
+In 1969, the hostile chess game assumed new proportions with the fielding of more lethal SAMs and AAAs. The U.S. Navy, upon perception of the Mediterranean Threat impact, initiated action that resulted in the next generation warning systems for Naval attack aircraft, the AN/ALR-45. It was the first digital system which incorporated hybrid microcircuits using digital logic and clock drivers. From 1970 – 1974, the AN/ALR-45 was introduced to the Fleet.
+:END:
+1969年，敌对的国际象棋比赛在更多致命的地空导弹和AAA的部署中占据了新的比例。美国海军在感受到地中海威胁的影响后，开始采取行动，为海军攻击机AN / ALR-45制造下一代预警系统。这是第一个采用数字逻辑和时钟驱动器的混合微电路的数字系统。从1970年到1974年，AN / ALR-45被引入舰队。
+
+
+:En:
+As the threat scenario continued to proliferate into a lethal array of densely deployed weapons of varying types, frequencies and modulation methods, a new realization emerged. Previous design philosophies were based on obtaining as much signal data as possible. Now, it became necessary to start discarding non-lethal threat information. Prioritization of threats and emitter tagging became critical. Only computational power could solve this increasingly complex technical problem. Unambiguous warning, coupled with ease of use, heralded the end of analog control in the aircraft warning function.
+:END:
+随着威胁情景继续扩散到致命部署的各种类型，频率和调制方法的致命武器阵列中，出现了一种新的认识。以前的设计理念基于获得尽可能多的信号数据。现在，有必要开始丢弃非致命的威胁信息。威胁和发射器标记的优先级变得至关重要。只有计算能力才能解决这个日益复杂的技术难题。明确的警告，加上易于使用，预示着飞机警告功能中模拟控制的结束。
+
+** ALR-46
+
+:En:
+The U.S. Air Force, as part of its ALR-46 program, was the first to field a digital, software-controlled radar warning receiver.
+In late 1971, a fundamental change took place at Applied Technology. In its continual quest to lead technology innovations, the company was changed from an analog circuit design house to a computer sciences house. Cost was a major motive in this change.
+In mid-1972, Applied Technology was in the midst of purchasing a militarized computer with an architecture similar to that of a standard avionics computer. Management review of the situation noted an indelible trend of the future need for more costly computer systems. The determination that a circuit board improvement to the ALR-45 could be duplicated by low cost memory, if the CPU was fast enough, provided a more attractive option. The solution resulted in an effective application of another new technology, the Vector V warning concept, and a next generation Applied Technology system.
+Based on a processing concept that was built around a variable programmer-alarmer idea, software routines were created so that probability statements on frequency/PRI, PRF, Pulse Width, Pulse Coding, etc., could be constantly analyzed.
+The initial study resulted in the idea that conditional probability statements with determinant pairs of frequency and PRI represented an effective, processing technique. Creating a computer capable of handling large volumes of data was the over-riding philosophy, but dramatic technological change had begun.
+:END:
+作为ALR-46计划的一部分，美国空军是第一个使用数字软件控制的雷达警告接收器。
+1971年末，应用技术公司发生了根本性的变化。在不断追求技术创新的过程中，公司从模拟电路设计公司转变为计算机科学家。成本是这一变化的主要动机。
+1972年中期，应用技术公司正在购买一台军用计算机，其架构类似于标准航空电子计算机。对情况的管理评估指出了未来需要更昂贵的计算机系统的不可磨灭的趋势。如果CPU足够快，确定电路板对ALR-45的改进可以通过低成本存储器复制，提供了更具吸引力的选择。该解决方案有效地应用了另一项新技术，Vector V警告概念和下一代应用技术系统。
+基于围绕可变编程器 - 报警器构思构建的处理概念，创建了软件例程，以便可以不断地分析频率/ PRI，PRF，脉冲宽度，脉冲编码等的概率陈述。
+初步研究得出的结论是，具有行列式频率和PRI对的条件概率陈述代表了一种有效的处理技术。创建一台能够处理大量数据的计算机是最重要的理念，但已经开始出现戏剧性的技术变革。
+
+
+:En:
+In late 1972, Applied Technology established a goal to develop the world’s first computer specifically designed for electronic warfare applications. The system would occupy 100 cubic inches in volume, consume 80 watts in power and realize a 250K words per second I/O rate. Also, the computer would deinterleave pulse trains and be capable of squadron-level reprogramming using flight line equipment.
+Results were impressive. In July 1973, the Applied Technology Advanced Computer (ATAC) was implemented. Cost was well within targeted goals, volume was only 96 cubic inches, power consumption was 45 watts instead of 80 watts and the I/O rate was 1.25 megawords per second, representing a five-fold improvement over the initial design goals.
+The new ATAC computer was subsequently injected into the Vector V program and resulted in a third generation system which incorporated all advancements in microprocessor and microcode technology.
+The Vector V signal data converter formed the basis of the AN/ALR-68(V), as well as the nucleus of the Enhanced Radar Warning Equipment used on the MRCA Tornado.
+The concept of computer managed power allocation of jamming assets began gathering favor. An aircraft flying into the forward edge of a battle area, facing SAM and AAA weapons, which are all controlled by a variety of radars, needed to intelligently use its radiative power. The jammers were used to spoof, or otherwise blot out the return to the hostile radar receiver. Integrated power management systems, using state-of-the-art computer processing, collected and analyzed multiple threats and provided real-time data for optimum jamming capabilities.
+:END:
+1972年末，应用技术公司确立了开发世界上第一台专为电子战应用而设计的计算机的目标。该系统占用100立方英寸的体积，功耗为80瓦，实现每秒250K字的I / O速率。此外，计算机将对脉冲序列进行解交织，并能够使用飞行线路设备进行中队级重编程。
+结果令人印象深刻1973年7月，应用技术高级计算机（ATAC）得以实施。成本完全符合目标，体积仅为96立方英寸，功耗为45瓦而不是80瓦，I / O速率为每秒1.25兆瓦，比初始设计目标提高了五倍。
+随后，新的ATAC计算机被注入Vector V计划，并产生了第三代系统，该系统结合了微处理器和微码技术的所有进步。
+Vector V信号数据转换器构成了AN / ALR-68（V）的基础，以及MRCA Tornado上使用的增强型雷达警告设备的核心。
+计算机管理的干扰资产配置概念开始受到青睐。一架飞机进入战区前沿，面对SAM和AAA武器，全部由各种雷达控制，需要智能地使用其辐射功率。干扰器用于欺骗或以其他方式将返回部分涂抹到敌方雷达接收器上。集成电源管理系统使用最先进的计算机处理，收集和分析多种威胁，并提供实时数据以实现最佳干扰能力。
+
+
+:En:
+The typical power management suite implied a “look through” time for the radar warning receiver. The implicit need for speed and prioritized threat warning information passed to jammers pushed technology to yet another frontier.
+Recognizing the need for coordinated use of electronic warfare assets, the U.S. Navy initiated the development of its third generation warning receiver for the EA-6B Prowler electronic warfare aircraft, called the CWCS program. In 1974, intense competition surrounded this coveted program solicitation, as an entire fleet retrofit and new aircraft inventory programs were on the horizon.
+In 1975, Applied Technology was awarded the CWCS program, now called the AN/ALR-67 countermeasures warning and control system.
+At the same time, the U.S. Air Force also had other major programs underway, the ALR-46 and the AN/ALR-69.
+:END:
+典型的电源管理套件意味着雷达警告接收器的“透视”时间。传递给干扰器的速度和优先威胁警告信息的隐含需求将技术推向了另一个边界。
+认识到需要协调使用电子战资产，美国海军开始为EA-6B徘徊者电子战飞机开发第三代警告接收器，称为CWCS计划。 1974年，激烈的竞争围绕着这个令人垂涎的计划征集，因为整个机队改造和新的飞机库存计划即将出现。
+1975年，应用技术公司被授予CWCS计划，现称为AN / ALR-67对策警告和控制系统。
+与此同时，美国空军也正在进行其他重大计划，即ALR-46和AN / ALR-69。
+
+
+** THREE DECADES LATER
+
+:En:
+Litton Applied Technology’s reputation for providing products with exceptional performance records in combat was reinforced again during Desert Storm. Litton threat warning systems were flown onboard 80% of the 1,000 U.S. fixed wing aircraft, and 100% of Canadian and Kuwait combat aircraft. Litton Applied Technology systems flown included the: ALR-69 on F-16, A-10 and MC/AC-130 aircraft; ALR-46 on B-52, RF-4C and MC/AC-130 aircraft and ALR-67 on F/A-18, A-6, F-14A and AV-8B aircraft. Coalition forces equipped with Litton threat warning systems achieved nearly perfect survivability rates. Installed EW systems and operational tactics were flown in more than 2000 combat sorties the first 48 hours of the war. Although many SAMs were fired, only one aircraft was lost to missile fire. This one loss amounts to an almost unbelievable low attrition rate of 0.05%. Standard attrition percentages used by Military Air Planners are 0.3% for the first 24 hours of combat operations.
+During the 42 days of Desert Storm operations, USN/USMC pilots flew 28,000 sorties with a total of 7 aircraft combat losses for an attrition rate of 0.025%. Combat pilots repeatedly praised the unambiguous threat identification and timely warning of Litton radar warning systems even in the presence of jammers, numerous hostile threat systems and large numbers of friendly radars.
+Since the beginning of the electronic warfare environment, Litton’s Applied Technology division has designed and produced threat warning systems to meet the most severe tests. Not since the first threat warning system, the APR-25, was exposed to combat in the skies over Viet Nam, has the company’s products been so critically tested. Pilots who flew in Viet Nam found the Iraqi air defenses as tough or more difficult than anything they had ever flown against. A member of the U.S. House of Representatives’ Intelligence Committee was quoted as saying, “next to Moscow, Baghdad is the most heavily defended target we might ever have planned to go against.” Threats faced and survived by coalition air forces included the SA-2, SA-3,
+SA-7, SA-8, SA-9 SA-14, Improved Hawk, Roland, Crotale, ZSU-23, multiple AAAs and various Soviet and French-made Iraqi aircraft.
+Air Force and Navy pilots reported that flack from AAA and SAM missiles was so heavy over target areas that without effective threat warning and coordinated countermeasures, many more aircraft would have been lost.
+:END:
+在沙漠风暴期间，利顿应用技术公司在战斗中提供具有卓越性能记录的产品的声誉再次得到加强。利顿威胁警告系统在1000架美国固定翼飞机的80％和100％的加拿大和科威特作战飞机上飞行。飞行的利顿应用技术系统包括：F-16，A-10和MC / AC-130飞机上的ALR-69; B-52，RF-4C和MC / AC-130飞机上的ALR-46和F / A-18，A-6，F-14A和AV-8B飞机上的ALR-67。配备Litton威胁预警系统的联军取得了近乎完美的生存率。安装的电子战系统和作战策略在战争的前48小时内飞行了2000多架战斗架次。虽然许多地空导弹被发射，但只有一架飞机在导弹射击中丧生。这一次损失相当于几乎令人难以置信的0.05％的低损耗率。军事航空规划师使用的标准磨损百分比在前24小时的作战行动中为0.3％。
+在沙漠风暴行动的42天期间，USN / USMC飞行员共飞行28,000架次，共有7架飞机失事，损失率为0.025％。战斗飞行员反复赞扬即使在有干扰器，众多敌对威胁系统和大量友好雷达的情况下，对利顿雷达预警系统进行明确的威胁识别和及时警告。
+自电子战环境开始以来，Litton的应用技术部门设计并制作了威胁预警系统，以满足最严苛的测试需求。自从第一个威胁预警系统APR-25在越南的天空中受到战斗以来，该公司的产品一直受到如此严峻的考验。在越南飞行的飞行员发现伊拉克的防空系统比他们曾经飞过的任何飞机都要艰难或困难。美国众议院情报委员会的一名成员被引述说，“在莫斯科旁边，巴格达是我们可能计划反对的最严重的防御目标。”联盟空军面临并幸存的威胁包括SA- 2，SA-3，
+SA-7，SA-8，SA-9 SA-14，改进的Hawk，Roland，Crotale，ZSU-23，多个AAA和各种苏联和法国制造的伊拉克飞机。
+空军和海军的飞行员报告称，AAA和SAM导弹的坍塌在目标区域如此沉重，如果没有有效的威胁警告和协调对策，将会有更多飞机失踪。
+
+
+:En:
+Litton’s ALR-67, ALR-69 and ALR-74(V) series threat warning systems were designed to defeat the best Soviet and other nations weapons technology. Operation Desert Storm was a real world demonstration of the superiority of the technology and knowledge embodied in the Litton systems.
+:END:
+利顿的ALR-67，ALR-69和ALR-74（V）系列威胁预警系统旨在打败最好的苏联和其他国家的武器技术。沙漠风暴行动是利顿系统所体现的技术和知识优越性的真实世界展示。
+
+** WHAT THE FUTURE HOLDS
+
+:En:
+Litton Applied Technology systems are meeting the needs of worldwide militaries in over 30 nations. representing 80% of all threat warning systems produced.
+As the proliferation of new threats and world conflicts continue to arise, the threat environment becomes more complex. This continuing proliferation of advanced weapons systems and missiles will drive the requirement for advanced, integrated and automated self-protection systems.
+There are very few defense equipment suppliers that have consistently delivered leading edge combat systems that operate effectively against present and emerging threats anywhere in the world. Litton Applied Technology is the leader of those few.
+Tomorrow’s changing requirements for self-protection and surveillance systems will continue to press the limits of technology. Leading the way with practical cost-effective solutions, Litton Applied Technology has designed and developed upgrade kits for installed systems, as well as new systems and self-protection suites.
+:END:
+利顿应用技术系统正在满足30多个国家的全球军队的需求。占所有威胁预警系统的80％。
+随着新威胁和世界冲突的不断增加，威胁环境变得更加复杂。先进武器系统和导弹的不断扩散将推动对先进，集成和自动化自我保护系统的需求。
+很少有国防设备供应商能够始终如一地提供先进的战斗系统，以有效地应对世界各地现有和新出现的威胁。 Litton Applied Technology是少数人的领导者。
+明天对自我保护和监视系统的要求不断变化将继续限制技术的极限。 Litton Applied Technology通过实用的高性价比解决方案引领潮流，为已安装的系统以及新系统和自我保护套件设计和开发升级套件。
+
+
+NEW TECHNOLOGY BREAKTHROUGHS
+
+:En:
+ALR-66B(V) Surveillance and Targeting System The ALR-66B(V)2 Surveillance and Targeting System provides precision direction finding for over-the-horizon capabilities for operators of maritime patrol aircraft through the detection, identification and location of radars in the C-J frequency range.
+The ALR-66B(V) system uses advanced signal processing techniques to achieve instantaneous, positive emitter identification in high-density environments. Integrated with the aircraft’s radar antenna, the system provides ultra-high system sensitivity and precision DF accuracy with no penalty to radar performance. Simultaneous operation  of the radar, surveillance and direction finding functions is allowed.
+Advanced system capabilities include:
+:END:
+ALR-66B（V）监视和瞄准系统ALR-66B（V）2监视和瞄准系统通过检测，识别和定位雷达的雷达，为海上巡逻机操作员提供超视距能力的精确测向。 CJ频率范围。
+ALR-66B（V）系统使用先进的信号处理技术在高密度环境中实现瞬时，正发射器识别。该系统与飞机的雷达天线集成，可提供超高的系统灵敏度和精确的DF精度，并且不会影响雷达性能。允许同时操作雷达，监视和测向功能。
+高级系统功能包括：
+
+
+:En:
+•	Automatic measurement of emitter parameters
+Integration with other aircraft sensors and systems via an expandable processor interface structure
+:END:
+•自动测量发射器参数
+通过可扩展的处理器接口结构与其他飞机传感器和系统集成
+
+
+:En:
+•	Advanced signal processing concepts cou  pled with expanded data memory
+ALR-62I Threat Warning System The ALR-62I represents major changes to the previously fielded ALR-62, providing improved situational awareness, survivability and mission accomplishment capabilities. The ALR-62I incorporates the latest in technology advancements including:
+Frequency Sorting Techniques
+Multiple Preprocessors and Processors
+Gate Arrays
+Integrated Instantaneous Frequency
+	Measurement Receiver, Superheterodyne Receiver, Crystal Video Receiver and 	YIG-controlled receiver
+
+Capability to integrate with jammers, chaff and flare dispensers and missile warning systems and to provide Forward Looking
+:END:
+•先进的信号处理概念与扩展的数据存储器相结合
+ALR-62I威胁警告系统ALR-62I代表了先前使用的ALR-62的重大变化，提供了改进的态势感知，生存能力和任务完成能力。 ALR-62I融合了最新的技术进步，包括：
+频率分选技术
+多个预处理器和处理器
+门阵列
+集成瞬时频率
+测量接收器，超外差接收器，晶体视频接收器和YIG控制接收器
+
+能够与干扰器，箔条和火炬分配器以及导弹预警系统集成并提供前瞻性
+
+
+Precision
+:En:
+The ALR-62I addresses CW, On/Off Keyed CW, Electronically Scanning emitters, Pulse Doppler, Pulse emitters (RF stable/hopper/agile and PRI stable/jitter/stagger/agile/wide-random) in the RF range of 0.5 to 18 GHz.
+A higher density environment capability was added to identify state-of-the-art threats, and to provide faster processing time with lower false alarm rates. Flight-line reprogrammable with a comprehensive diagnostic BIT, other ALR-62 improvements include 1553B interfaces with onboard avionics and increased MTBF rates.
+This advanced technology system upgrade includes fast bipolar CVRs, a wide-band IFM receiver, dual bandwidth SHR, multiple CW/PD input protection devices consisting of two-band reject YIG filters, variable attenuator, software adaptive threshold, frequency and AOA screens. Also, a computer network consisting of dual CPUs with EEROM memory and 7 microcontrollers, dual pipeline video processors, dynamic input scheduling, new self test oscillators and new software algorithms are included.
+ALR-67 and the ECP-510/Follow-On Upgrade The basic ALR-67 threat warning system is installed on F-14, F/A-18, A-6 and AV-8B tactical aircraft for improved situational awareness. The ALR-67 ECP-510 upgrade for fielded ALR-67 systems is a card-for-card upgrade that provides a significant increase in system sensitivity in the presence of strong signals, and a sizeable increase in computer pulse processing capability using the latest in technology.
+Litton has made a significant investment in a follow-on upgrade to the ALR-67 ECP-510 system. Upgrade features include wide band passive ranging and the capability to detect and/or exploit low frequency signals for improved tactical awareness.
+:END:
+ALR-62I在0.5到50的RF范围内处理CW，开/关键控CW，电子扫描发射器，脉冲多普勒，脉冲发射器（RF稳定/漏斗/敏捷和PRI稳定/抖动/交错/灵活/宽随机） 18 GHz。
+增加了更高密度的环境功能，以识别最先进的威胁，并提供更快的处理时间和更低的误报率。飞行线可重新编程，具有全面的诊断BIT，其他ALR-62改进包括1553B接口与机载航空电子设备和增加的MTBF速率。
+这项先进的技术系统升级包括快速双极CVR，宽带IFM接收器，双带宽SHR，多个CW / PD输入保护器件，包括双频段拒绝YIG滤波器，可变衰减器，软件自适应阈值，频率和AOA屏幕。此外，还包括一个计算机网络，包括带有EEROM内存和7个微控制器的双CPU，双流水线视频处理器，动态输入调度，新的自测振荡器和新的软件算法。
+ALR-67和ECP-510 /后续升级基本的ALR-67威胁警告系统安装​​在F-14，F / A-18，A-6和AV-8B战术飞机上，以提高态势感知能力。面向现场ALR-67系统的ALR-67 ECP-510升级是一种卡到卡的升级，可在强信号存在的情况下显着提高系统灵敏度，并使用最新版本的计算机脉冲处理能力大幅提升技术。
+Litton对ALR-67 ECP-510系统的后续升级进行了大量投资。升级功能包括宽带无源测距以及检测和/或利用低频信号以提高战术意识的能力。
+
+
+ALR-91(V) Series Threat Warning Systems
+
+:En:
+The principle technology breakthrough provided by the ALR-91(V) Series threat warning systems is the capability to continuously collect and analyze radar signals over the full 0.5 to 18.0 GHz frequency range. Prior and current generation systems are constrained in that collection and analysis capabilities of radar signal data are limited to a portion of the frequency range. Typically, other systems are of “band sampling” type; that is they collect and analyze signal data of one band at a time. Three or four bands are usually required to cover the full frequency range. Detection of radar signals on other bands is not possible when a band sampling is underway. The ALR-91(V) Series does not require band sampling, as all bands are collected at the same time. This new capability allows detection of all tactical radars as soon as aircraft tracking begins.
+The capability to continuously collect and analyze radar signals over the full frequency range is made possible because of recent breakthroughs in the design of Very Large Scale Integration (VLSI) Application Specific Integrated Circuits (ASIC). A set of these VLSI ASIC chips was developed by Litton to enable the ALR-91(V) Series to rapidly detect and provide warning of the growing number of phased array radars. Software programmable, these chips automatically:
+:END:
+ALR-91（V）系列威胁预警系统提供的主要技术突破是能够在整个0.5至18.0 GHz频率范围内连续收集和分析雷达信号。先前和当前的发电系统受到限制，因为雷达信号数据的收集和分析能力限于频率范围的一部分。通常，其他系统是“带采样”类型;也就是说，他们一次收集和分析一个频段的信号数据。通常需要三个或四个频段来覆盖整个频率范围。当正在进行频带采样时，无法检测其他频段上的雷达信号。 ALR-91（V）系列不需要波段采样，因为所有波段都是同时采集的。这种新功能可以在飞机跟踪开始时立即检测所有战术雷达。
+由于最近在超大规模集成电路（VLSI）专用集成电路（ASIC）的设计方面取得了突破，因此可以在整个频率范围内连续收集和分析雷达信号。 Litton开发了一套这些VLSI ASIC芯片，使ALR-91（V）系列能够快速检测并提供越来越多的相控阵雷达的警告。软件可编程，这些芯片自动：
+
+
+:En:
+•	Collect radar signal pulse data;
+
+•	Sort each pulse by frequency, angle and amplitude;
+
+•	Store the sorted pulses in separate memory areas;
+
+•	Store only the desired number of pulses from each radar signal, and
+:END:
+•收集雷达信号脉冲数据;
+
+•按频率，角度和幅度对每个脉冲进行排序;
+
+•将分类的脉冲存储在单独的存储区中;
+
+•仅存储来自每个雷达信号的所需脉冲数，以及
+
+
+Remove redundant pulses.
+
+:En:
+The ALR-91(V) Series threat warning systems detect, analyze and identify all known types of tactical threat radars in less than two seconds. The systems have been successfully tested against the full range of standard and modern radar types.
+:END:
+ALR-91（V）系列威胁警告系统可在不到两秒的时间内检测，分析和识别所有已知类型的战术威胁雷达。该系统已成功通过各种标准和现代雷达类型的测试。
+
+
+ALR-93(V) Series Threat Warning and ESM System
+
+:En:
+The ALR-93(V) Threat Warning and ESM System is a lightweight, high-sensitivity, C through J band system, designed to operate in dense, complex emitter environments with a high probability of intercept capability. Its unique architecture, combined with advanced technology and sophisticated packaging concepts, resulted in a high-performance, small footprint system which weighs less than 55 pounds, and meets the critical requirements needed for today’s fighter aircraft.
+The principle technology breakthrough provided by the ALR-93(V) Series Threat Warning and ESM systems is continuous collection and analysis of radar signals in complex environments. The ALR-93(V) is an effective asset to use against these modern threats including:
+:END:
+ALR-93（V）威胁警告和ESM系统是一种轻量级，高灵敏度的C到J频段系统，设计用于在密集，复杂的发射器环境中运行，具有很高的拦截能力。其独特的架构，结合先进的技术和先进的包装理念，形成了一个重量不到55磅的高性能，小尺寸系统，并满足当今战斗机所需的关键要求。
+ALR-93（V）系列威胁警告和ESM系统提供的主要技术突破是在复杂环境中连续收集和分析雷达信号。 ALR-93（V）是用于抵御这些现代威胁的有效资产，包括：
+
+
+:En:
+•	Lethal radars that operate in CW, wide pulse widths and/or high duty cycle (Pulse Doppler);
+
+•	Lethal scanning radars (track-while-scan);
+
+•	High duty cycle emitters capable of masking the detection of other radars; and
+
+•	Simultaneous agility in PRI and RF parameters.
+:END:
+•以CW，宽脉冲宽度和/或高占空比工作的致命雷达（脉冲多普勒）;
+
+•致命扫描雷达（扫描时跟踪）;
+
+•高占空比发射器，能够屏蔽其他雷达的探测;和
+
+•PRI和RF参数的同时灵活性。
+
+
+:En:
+The ALR-93(V)’s unique receiver configuration contributes to its effective operation. Baseband receivers and a wide acquisition bandwidth Instantaneous Frequency Measurement (IFM) receiver cover the entire frequency spectrum in continuous bands while maintaining a high probability of intercept. This capability minimizes the time required to cover the entire RF spectrum and provides pulse-to-pulse frequency measurement of even the most frequency agile radars. The IFM provides the key discriminator to the emitter analysis process, and significantly contributes to its ability to operate in high density environments.
+The ALR-93 incorporates a superhet receiver for high sensitivity and high selectivity with narrowband frequency search modes. The SHR scanning capability further contributes to the elimination of ambiguities by resolving and/or looking around multiple high duty cycle Pulse Doppler and CW emissions radiating at closely spaced frequencies and bearings.
+The ALR-93(V) Series contains hardware and software tools which function auto-matically and without degradation in high density environments, and addresses the problem of high duty cycle signal corruption and the acquisition of pulsed emissions in the presence of these signals. This includes environment filtering at RF and video, narrowband SHR search and preprocessing.
+:END:
+ALR-93（V）独特的接收器配置有助于其有效运行。基带接收器和宽采集带宽瞬时频率测量（IFM）接收器覆盖连续频段的整个频谱，同时保持很高的截获概率。这种功能可以最大限度地缩短覆盖整个RF频谱所需的时间，并提供即使是大多数频率捷变雷达的脉冲到脉冲频率测量。 IFM为发射极分析过程提供了关键鉴别器，并显着提高了其在高密度环境中运行的能力。
+ALR-93采用超级接收器，具有窄带频率搜索模式的高灵敏度和高选择性。 SHR扫描能力通过解析和/或观察以紧密间隔的频率和轴承辐射的多个高占空比脉冲多普勒和CW发射，进一步有助于消除模糊。
+ALR-93（V）系列包含硬件和软件工具，这些工具可在高密度环境中自动运行并且不会降低，并解决高占空比信号损坏和在存在这些信号时获取脉冲发射的问题。这包括RF和视频环境滤波，窄带SHR搜索和预处理。
+
+
+Advanced Self-Protection Integrated Suite (ASPIS)
+
+:En:
+One of the ways Litton Applied Technology is improving situational awareness capabilities for tactical aircraft is through an Advanced Self-Protection Integrated Suite or ASPIS. Strategically aligned, Litton Applied Technology, Raytheon’s Electromagnetic Systems Division and Tracor Aerospace have integrated what is clearly the survivability system for the 21st century.
+The ASPIS consists of threat warning/ESM systems, provided by Litton, electronic countermeasures systems (jammers) provided by Raytheon, and chaff and flare countermeasures dispenser systems provided by Tracor.
+The customer is able to purchase a system tailored to his unique needs using off-the-shelf and proven electronic warfare systems which have been pre-integrated and demonstrated. The diversity of this unrivaled approach allows ASPIS to be installed as an original system or as an upgrade to existing systems. Phased upgrades of capabilities are available to meet the user’s schedule and budget.
+:END:
+Litton Applied Technology提高战术飞机的态势感知能力的方法之一是通过高级自我保护集成套件或ASPIS。具有战略意义的Litton应用技术公司，雷神公司的电磁系统部门和Tracor Aerospace公司已经整合了21世纪的生存系统。
+ASPIS由Litton提供的威胁警告/ ESM系统，Raytheon提供的电子对抗系统（干扰器）以及Tracor提供的箔条和火炬对抗分配器系统组成。
+客户可以使用已经预先集成和演示的现成且经过验证的电子战系统购买适合其独特需求的系统。这种无与伦比的方法的多样性允许ASPIS作为原始系统安装或作为现有系统的升级。分阶段升级功能可满足用户的日程安排和预算。
+
