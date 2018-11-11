@@ -229,7 +229,7 @@
   dataset 研究调制体制识别的数据集
   1. [[file:backgroud.org][使用代码生成 dataset]]
   2. 学习深度学习
-  3. 学习GNU radio
+  3. [[file:GNU_Radio_note.org][GNU radio]]
      总结 c++ 的 OOT module 编写方式
   4.  信号检测－>调制识别： 学习 gr-inspector
      解读 [[file:~/gr-inspector/lib/signal_detector_cvf_impl.cc][signal_detector_cvf_impl]] 
@@ -259,7 +259,18 @@
       - 模块的 out 为 fft 频谱。
       - 当 rf_map 发生变化时（有新的信号检测到，或已检出的信号发生了变化）。打包并发送 message，写 logfile.
         
-  
+** 非监督学习的调制体制识别
+   文献 解释了：
+   1. 条件概率 P(C|x(t)), 后验概率 P(x(t)|C), 先验概率 P(C) 之间的联系
+   2. 为什么要做特征提取 F(x(t))
+*** Bayesian Approach
+\begin{equation}
+\hat{C} = \text{argmax}_{C\in \mathrc{C}} P(C|x(t))
+\end{equation}
+*** Feature Extraction
+\begin{equation}
+\hat{C} = \text{argmax}_{C\in \mathrc{C}} P(C|F(x(t)))
+\end{equation}
 * 信号解调
 ** AM
    http://www.ece.uvic.ca/~elec350/lab_manual/ar01s01s05.html
